@@ -6,7 +6,7 @@ import com.baseproject.interview.data.Feature
 
 interface FeatureContract {
 
-    interface FeatureView : BaseView<Presenter> {
+    interface View : BaseView<Presenter> {
 
         fun showData(data: List<Feature>)
         fun showDataError()

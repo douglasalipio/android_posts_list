@@ -7,7 +7,7 @@ import com.baseproject.interview.R
 import com.baseproject.interview.data.Feature
 import org.koin.android.ext.android.inject
 
-class FeatureActivity : AppCompatActivity(), FeatureContract.FeatureView {
+class FeatureActivity : AppCompatActivity(), FeatureContract.View {
 
     private val featurePresenter: FeaturePresenter by inject()
 
