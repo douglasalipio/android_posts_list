@@ -5,5 +5,5 @@ import io.reactivex.Flowable
 
 interface AppDataSource {
 
-    fun getTasks(): Flowable<List<String>>
+    fun getTasks(): Flowable<List<Feature>>
 }

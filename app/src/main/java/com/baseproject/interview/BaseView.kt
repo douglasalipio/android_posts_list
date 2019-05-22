@@ -1,7 +1,4 @@
 package com.baseproject.interview
 
 
-
-interface BaseView<T> {
-    var presenter: T
-}
+interface BaseView<T>
