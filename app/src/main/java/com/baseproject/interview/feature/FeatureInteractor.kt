@@ -5,6 +5,7 @@ import org.koin.android.ext.android.inject
 import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.Feature
 import com.baseproject.interview.util.computation
+import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -19,7 +20,7 @@ class FeatureInteractor(private val appRepository: AppRepository) {
     }
 
     fun requestDataAPI(onFinishedListener: OnFinishedListener): Disposable = appRepository.getTasks()
-        .subscribeOn(computation())
+        .subscribeOn(io())
         .observeOn(ui())
         .doOnError { onFinishedListener.onResultFail(it.message ?: "") }
         .subscribe { onNext -> onFinishedListener.onResultSuccess(onNext) }
