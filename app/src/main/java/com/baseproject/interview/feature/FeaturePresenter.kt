@@ -1,10 +1,13 @@
 package com.baseproject.interview.feature
 
 import com.baseproject.interview.data.Feature
+import com.baseproject.interview.di.ActivityScoped
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
-
-class FeaturePresenter(private val featureInteractor: FeatureInteractor) : FeatureContract.Presenter {
+@ActivityScoped
+class FeaturePresenter @Inject constructor(private val interactor: FeatureContract.Interactor) :
+    FeatureContract.Presenter {
 
     private var view: FeatureContract.View? = null
     private val compositeDisposable = CompositeDisposable()
@@ -15,11 +18,10 @@ class FeaturePresenter(private val featureInteractor: FeatureInteractor) : Featu
 
     override fun loadData() {
         view?.let {
-            val test = featureInteractor.requestDataAPI(object : FeatureInteractor.OnFinishedListener {
+            val test = interactor.requestData(object : FeatureInteractor.OnFinishedListener {
                 override fun onResultSuccess(data: List<Feature>) {
                     it.showData(data)
                 }
-
                 override fun onResultFail(strError: String) {
                     it.showDataError()
                 }
@@ -31,5 +33,4 @@ class FeaturePresenter(private val featureInteractor: FeatureInteractor) : Featu
     override fun dropView() {
         view = null
     }
-
 }

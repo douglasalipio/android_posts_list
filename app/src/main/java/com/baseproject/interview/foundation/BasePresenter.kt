@@ -1,4 +1,4 @@
-package com.baseproject.interview
+package com.baseproject.interview.foundation
 
 interface BasePresenter {
     /**

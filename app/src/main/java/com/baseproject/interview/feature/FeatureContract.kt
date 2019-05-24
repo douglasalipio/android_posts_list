@@ -1,8 +1,11 @@
 package com.baseproject.interview.feature
 
-import com.baseproject.interview.BasePresenter
-import com.baseproject.interview.BaseView
+import com.baseproject.interview.foundation.BasePresenter
+import com.baseproject.interview.foundation.BaseView
 import com.baseproject.interview.data.Feature
+import com.baseproject.interview.foundation.BaseInteractor
+import io.reactivex.Flowable
+import io.reactivex.disposables.Disposable
 
 interface FeatureContract {
 
@@ -14,5 +17,10 @@ interface FeatureContract {
 
     interface Presenter : BasePresenter {
         fun loadData()
+    }
+
+    interface Interactor : BaseInteractor {
+
+        fun requestData(onFinishedListener: FeatureInteractor.OnFinishedListener): Disposable
     }
 }

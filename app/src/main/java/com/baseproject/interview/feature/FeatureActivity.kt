@@ -1,15 +1,16 @@
 package com.baseproject.interview.feature
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.baseproject.interview.R
 import com.baseproject.interview.data.Feature
-import org.koin.android.ext.android.inject
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class FeatureActivity : AppCompatActivity(), FeatureContract.View {
+class FeatureActivity : DaggerAppCompatActivity(), FeatureContract.View {
 
-    private val featurePresenter: FeaturePresenter by inject()
+    @Inject
+    internal lateinit var featurePresenter: FeatureContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

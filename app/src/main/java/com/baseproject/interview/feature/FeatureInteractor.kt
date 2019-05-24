@@ -1,16 +1,15 @@
 package com.baseproject.interview.feature
 
-import org.koin.android.ext.android.inject
 
 import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.Feature
-import com.baseproject.interview.util.computation
+import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import javax.inject.Inject
 
-class FeatureInteractor(private val appRepository: AppRepository) {
+class FeatureInteractor @Inject constructor(private val appRepository: AppRepository) : FeatureContract.Interactor {
 
     interface OnFinishedListener {
 
@@ -19,9 +18,10 @@ class FeatureInteractor(private val appRepository: AppRepository) {
         fun onResultFail(strError: String)
     }
 
-    fun requestDataAPI(onFinishedListener: OnFinishedListener): Disposable = appRepository.getTasks()
+    override fun requestData(onFinishedListener: OnFinishedListener): Disposable = appRepository.requestData()
         .subscribeOn(io())
         .observeOn(ui())
         .doOnError { onFinishedListener.onResultFail(it.message ?: "") }
         .subscribe { onNext -> onFinishedListener.onResultSuccess(onNext) }
 }
+
