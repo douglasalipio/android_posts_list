@@ -1,0 +1,22 @@
+ext {
+    androidx_version = '1.0.2'
+    constrant_layout_version = '1.1.3'
+
+    retrofit_version = '2.5.0'
+    retrofit_adapter_version = '2.3.0'
+    ok_http_version = '3.12.0'
+    logging_version = '3.10.0'
+
+    rx_java = '2.2.0'
+    rx_android_java = '2.0.1'
+
+    dagger_version = '2.21'
+
+    junit_version = '4.12'
+    hamcrest_version  = '1.3'
+    runner_version = '1.1.1'
+
+    mockito_version = '2.1.0'
+    dexmaker_version = '2.12.1'
+    espresso_version = '3.1.1'
+}
