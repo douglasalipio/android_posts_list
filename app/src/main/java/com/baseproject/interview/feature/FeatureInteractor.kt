@@ -10,17 +10,17 @@ import javax.inject.Inject
 
 class FeatureInteractor @Inject constructor(private val appRepository: AppRepository) : FeatureContract.Interactor {
 
-    interface OnFinishedListener {
+    interface GetFeatureCallback {
 
-        fun onResultSuccess(data: List<Feature>)
+        fun onFeatureLoaded(data: List<Feature>)
 
-        fun onResultFail(strError: String)
+        fun onDataNotAvailable(strError: String)
     }
 
-    override fun requestData(onFinishedListener: OnFinishedListener): Disposable = appRepository.requestData()
+    override fun requestData(getFeatureCallback: GetFeatureCallback): Disposable = appRepository.requestData()
         .subscribeOn(io())
         .observeOn(ui())
-        .doOnError { onFinishedListener.onResultFail(it.message ?: "") }
-        .subscribe { onNext -> onFinishedListener.onResultSuccess(onNext) }
+        .doOnError { getFeatureCallback.onDataNotAvailable(it.message ?: "") }
+        .subscribe { onNext -> getFeatureCallback.onFeatureLoaded(onNext) }
 }
 

@@ -18,11 +18,11 @@ class FeaturePresenter @Inject constructor(private val interactor: FeatureContra
 
     override fun loadData() {
         view?.let {
-            val test = interactor.requestData(object : FeatureInteractor.OnFinishedListener {
-                override fun onResultSuccess(data: List<Feature>) {
+            val test = interactor.requestData(object : FeatureInteractor.GetFeatureCallback {
+                override fun onFeatureLoaded(data: List<Feature>) {
                     it.showData(data)
                 }
-                override fun onResultFail(strError: String) {
+                override fun onDataNotAvailable(strError: String) {
                     it.showDataError()
                 }
             })

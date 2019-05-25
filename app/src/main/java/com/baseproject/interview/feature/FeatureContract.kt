@@ -4,7 +4,6 @@ import com.baseproject.interview.foundation.BasePresenter
 import com.baseproject.interview.foundation.BaseView
 import com.baseproject.interview.data.Feature
 import com.baseproject.interview.foundation.BaseInteractor
-import io.reactivex.Flowable
 import io.reactivex.disposables.Disposable
 
 interface FeatureContract {
@@ -21,6 +20,6 @@ interface FeatureContract {
 
     interface Interactor : BaseInteractor {
 
-        fun requestData(onFinishedListener: FeatureInteractor.OnFinishedListener): Disposable
+        fun requestData(getFeatureCallback: FeatureInteractor.GetFeatureCallback): Disposable
     }
 }
