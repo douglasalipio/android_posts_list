@@ -7,6 +7,7 @@ import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.data.remote.RemoteDataSource
 import com.baseproject.interview.data.remote.ServiceAppFactory
 import com.baseproject.interview.feature.FeatureActivity
+import com.baseproject.interview.feature.FeatureContract
 import com.baseproject.interview.feature.FeatureInteractor
 import com.baseproject.interview.feature.FeatureModule
 import dagger.Binds
@@ -30,15 +31,6 @@ class AppModule {
     @Provides
     @Reusable
     internal fun provideContext(application: Application): Context = application
-}
-
-@Module
-class InteractorModule {
-
-    @Provides
-    @Reusable
-    internal fun provideAppInteractor(appRepository: AppRepository): FeatureInteractor =
-        FeatureInteractor(appRepository)
 }
 
 @Module

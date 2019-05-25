@@ -3,7 +3,6 @@ package com.baseproject.interview.feature
 
 import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.Feature
-import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.Disposable
