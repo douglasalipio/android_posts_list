@@ -2,12 +2,10 @@ package com.baseproject.interview.feature
 
 
 import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.Feature
-import com.baseproject.interview.util.io
-import com.baseproject.interview.util.ui
+import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers.io
 import javax.inject.Inject
 
 class FeatureInteractor @Inject constructor(private val appRepository: AppDataSource) : FeatureContract.Interactor {
@@ -25,7 +23,7 @@ class FeatureInteractor @Inject constructor(private val appRepository: AppDataSo
         compositeDisposable.add(
             appRepository.requestData()
                 .subscribeOn(io())
-                .observeOn(ui())
+                .observeOn(mainThread())
                 .doOnError { getFeatureCallback.onDataNotAvailable(it.message ?: "") }
                 .subscribe { onNext -> getFeatureCallback.onFeatureLoaded(onNext) }
         )

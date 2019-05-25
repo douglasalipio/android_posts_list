@@ -7,16 +7,12 @@ import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.data.remote.RemoteDataSource
 import com.baseproject.interview.data.remote.ServiceAppFactory
-import com.baseproject.interview.feature.FeatureActivity
-import com.baseproject.interview.feature.FeatureContract
-import com.baseproject.interview.feature.FeatureInteractor
+import com.babylon.mesquita.interview.feature.FeatureActivity
 import com.baseproject.interview.feature.FeatureModule
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import dagger.android.ContributesAndroidInjector
-import javax.inject.Singleton
 
 @Module
 abstract class ActivityModule {

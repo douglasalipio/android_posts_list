@@ -1,9 +1,10 @@
-package com.baseproject.interview.feature
+package com.babylon.mesquita.interview.feature
 
 import android.os.Bundle
 import android.util.Log
-import com.baseproject.interview.R
+import com.babylon.mesquita.interview.R
 import com.baseproject.interview.data.Feature
+import com.baseproject.interview.feature.FeatureContract
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
