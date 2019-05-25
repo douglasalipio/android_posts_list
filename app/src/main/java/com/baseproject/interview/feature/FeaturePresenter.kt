@@ -10,7 +10,6 @@ class FeaturePresenter @Inject constructor(private val interactor: FeatureContra
     FeatureContract.Presenter {
 
     private var view: FeatureContract.View? = null
-    private val compositeDisposable = CompositeDisposable()
 
     override fun <T> takeView(view: T) {
         this.view = view as FeatureContract.View
@@ -18,15 +17,15 @@ class FeaturePresenter @Inject constructor(private val interactor: FeatureContra
 
     override fun loadData() {
         view?.let {
-            val test = interactor.requestData(object : FeatureInteractor.GetFeatureCallback {
+            interactor.requestData(object : FeatureInteractor.GetFeatureCallback {
                 override fun onFeatureLoaded(data: List<Feature>) {
                     it.showData(data)
                 }
+
                 override fun onDataNotAvailable(strError: String) {
                     it.showDataError()
                 }
             })
-            compositeDisposable.add(test)
         }
     }
 

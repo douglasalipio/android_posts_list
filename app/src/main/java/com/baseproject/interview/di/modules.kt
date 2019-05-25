@@ -2,6 +2,7 @@ package com.baseproject.interview.di
 
 import android.app.Application
 import android.content.Context
+import com.baseproject.interview.data.AppDataSource
 import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.data.remote.RemoteDataSource
@@ -38,12 +39,17 @@ class RepositoryModule {
 
     @Provides
     @Reusable
-    internal fun provideAppRepository(apiHelper: ApiHelper): AppRepository =
-        AppRepository(RemoteDataSource(apiHelper))
+    internal fun provideAppRepository(remoteDataSource: RemoteDataSource): AppDataSource =
+        AppRepository(remoteDataSource)
 }
 
 @Module
 class NetworkModule {
+
+    @Provides
+    @Reusable
+    internal fun provideRemoteRepository(apiHelper: ApiHelper): RemoteDataSource =
+        RemoteDataSource(apiHelper)
 
     @Provides
     @Reusable

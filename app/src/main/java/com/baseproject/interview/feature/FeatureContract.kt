@@ -20,6 +20,6 @@ interface FeatureContract {
 
     interface Interactor : BaseInteractor {
 
-        fun requestData(getFeatureCallback: FeatureInteractor.GetFeatureCallback): Disposable
+        fun requestData(getFeatureCallback: FeatureInteractor.GetFeatureCallback)
     }
 }
