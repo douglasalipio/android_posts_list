@@ -2,7 +2,6 @@ package com.baseproject.interview.feature
 
 import com.baseproject.interview.data.Feature
 import com.baseproject.interview.di.ActivityScoped
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 @ActivityScoped
