@@ -1,6 +1,6 @@
-package com.baseproject.interview.data.remote
+package com.babylon.mesquita.interview.data.remote
 
-import com.baseproject.interview.data.AppDataSource
+import com.babylon.mesquita.interview.data.AppDataSource
 
 class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 

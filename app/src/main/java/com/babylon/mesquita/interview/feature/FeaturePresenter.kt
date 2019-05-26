@@ -1,7 +1,7 @@
-package com.baseproject.interview.feature
+package com.babylon.mesquita.interview.feature
 
-import com.baseproject.interview.data.Feature
-import com.baseproject.interview.di.ActivityScoped
+import com.babylon.mesquita.interview.data.Feature
+import com.babylon.mesquita.interview.di.ActivityScoped
 import javax.inject.Inject
 
 @ActivityScoped

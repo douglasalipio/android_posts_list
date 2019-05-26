@@ -1,4 +1,4 @@
-package com.baseproject.interview.data.remote
+package com.babylon.mesquita.interview.data.remote
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson

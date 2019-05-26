@@ -1,6 +1,6 @@
 package com.baseproject.interview
 
-import com.baseproject.interview.data.Feature
+import com.babylon.mesquita.interview.data.Feature
 
 fun listOfFeature(): MutableList<Feature> {
     val features = mutableListOf<Feature>()
