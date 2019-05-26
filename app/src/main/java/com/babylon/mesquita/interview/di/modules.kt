@@ -16,7 +16,6 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityModule {
-
     @ActivityScoped
     @ContributesAndroidInjector(modules = [FeatureModule::class])
     abstract fun featureAcitivity(): FeatureActivity
@@ -24,7 +23,6 @@ abstract class ActivityModule {
 
 @Module
 class AppModule {
-
     @Provides
     @Reusable
     internal fun provideContext(application: Application): Context = application
@@ -32,7 +30,6 @@ class AppModule {
 
 @Module
 class RepositoryModule {
-
     @Provides
     @Reusable
     internal fun provideAppRepository(remoteDataSource: RemoteDataSource): AppDataSource =
@@ -41,7 +38,6 @@ class RepositoryModule {
 
 @Module
 class NetworkModule {
-
     @Provides
     @Reusable
     internal fun provideRemoteRepository(apiHelper: ApiHelper): RemoteDataSource =
