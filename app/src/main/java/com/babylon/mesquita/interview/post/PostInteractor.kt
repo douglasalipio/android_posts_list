@@ -1,4 +1,4 @@
-package com.babylon.mesquita.interview.feature
+package com.babylon.mesquita.interview.post
 
 
 import com.babylon.mesquita.interview.data.AppDataSource
@@ -8,7 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers.io
 import javax.inject.Inject
 
-class FeatureInteractor @Inject constructor(private val appRepository: AppDataSource) : FeatureContract.Interactor {
+class PostInteractor @Inject constructor(private val appRepository: AppDataSource) : PostContract.Interactor {
 
 
     private val compositeDisposable = CompositeDisposable()
