@@ -1,14 +1,14 @@
-package com.baseproject.interview.di
+package com.babylon.mesquita.interview.di
 
 import android.app.Application
 import android.content.Context
-import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.AppRepository
-import com.baseproject.interview.data.remote.ApiHelper
-import com.baseproject.interview.data.remote.RemoteDataSource
-import com.baseproject.interview.data.remote.ServiceAppFactory
+import com.babylon.mesquita.interview.data.AppDataSource
+import com.babylon.mesquita.interview.data.AppRepository
+import com.babylon.mesquita.interview.data.remote.ApiHelper
+import com.babylon.mesquita.interview.data.remote.RemoteDataSource
+import com.babylon.mesquita.interview.data.remote.ServiceAppFactory
 import com.babylon.mesquita.interview.feature.FeatureActivity
-import com.baseproject.interview.feature.FeatureModule
+import com.babylon.mesquita.interview.feature.FeatureModule
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

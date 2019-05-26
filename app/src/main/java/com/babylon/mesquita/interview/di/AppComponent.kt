@@ -1,6 +1,6 @@
-package com.baseproject.interview.di
+package com.babylon.mesquita.interview.di
 
-import com.baseproject.interview.FeatureApplication
+import com.babylon.mesquita.interview.FeatureApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

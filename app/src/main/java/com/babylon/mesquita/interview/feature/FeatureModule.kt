@@ -1,9 +1,8 @@
-package com.baseproject.interview.feature
+package com.babylon.mesquita.interview.feature
 
-import com.baseproject.interview.di.ActivityScoped
+import com.babylon.mesquita.interview.di.ActivityScoped
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
 abstract class FeatureModule {

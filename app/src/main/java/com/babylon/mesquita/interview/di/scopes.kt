@@ -1,4 +1,4 @@
-package com.baseproject.interview.di
+package com.babylon.mesquita.interview.di
 
 import javax.inject.Qualifier
 import javax.inject.Scope

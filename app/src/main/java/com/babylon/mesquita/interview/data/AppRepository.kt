@@ -1,6 +1,6 @@
-package com.baseproject.interview.data
+package com.babylon.mesquita.interview.data
 
-import com.baseproject.interview.data.remote.RemoteDataSource
+import com.babylon.mesquita.interview.data.remote.RemoteDataSource
 import javax.inject.Inject
 
 

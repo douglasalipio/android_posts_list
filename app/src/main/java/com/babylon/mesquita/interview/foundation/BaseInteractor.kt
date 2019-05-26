@@ -1,3 +1,3 @@
-package com.baseproject.interview.foundation
+package com.babylon.mesquita.interview.foundation
 
 interface BaseInteractor

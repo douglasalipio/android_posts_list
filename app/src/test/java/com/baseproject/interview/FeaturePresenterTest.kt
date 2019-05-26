@@ -1,15 +1,10 @@
 package com.baseproject.interview
 
-import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.AppRepository
-import com.baseproject.interview.data.Feature
-import com.baseproject.interview.feature.FeatureContract
-import com.baseproject.interview.feature.FeatureInteractor
-import com.baseproject.interview.feature.FeaturePresenter
-import com.nhaarman.mockitokotlin2.any
+import com.babylon.mesquita.interview.data.AppDataSource
+import com.babylon.mesquita.interview.feature.FeatureContract
+import com.babylon.mesquita.interview.feature.FeatureInteractor
+import com.babylon.mesquita.interview.feature.FeaturePresenter
 import com.nhaarman.mockitokotlin2.capture
-import io.reactivex.Flowable
-import io.reactivex.disposables.CompositeDisposable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.*

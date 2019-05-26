@@ -1,6 +1,6 @@
-package com.baseproject.interview.data.remote
+package com.babylon.mesquita.interview.data.remote
 
-import com.baseproject.interview.data.Feature
+import com.babylon.mesquita.interview.data.Feature
 import io.reactivex.Flowable
 import retrofit2.http.GET
 
