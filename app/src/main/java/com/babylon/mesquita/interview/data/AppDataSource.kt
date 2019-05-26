@@ -1,9 +1,13 @@
 package com.babylon.mesquita.interview.data
 
-import io.reactivex.Flowable
+import io.reactivex.Observable
 
 
 interface AppDataSource {
 
-    fun requestData(): Flowable<List<Feature>>
+    fun requestPosts(): Observable<List<Post>>
+
+    fun requestAuthors(): Observable<List<Author>>
+
+    fun requestComments(): Observable<List<Comment>>
 }

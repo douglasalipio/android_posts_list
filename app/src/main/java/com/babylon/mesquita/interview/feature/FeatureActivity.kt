@@ -3,7 +3,7 @@ package com.babylon.mesquita.interview.feature
 import android.os.Bundle
 import android.util.Log
 import com.babylon.mesquita.interview.R
-import com.babylon.mesquita.interview.data.Feature
+import com.babylon.mesquita.interview.data.Post
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -16,11 +16,11 @@ class FeatureActivity : DaggerAppCompatActivity(), FeatureContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         featurePresenter.takeView(this)
-        featurePresenter.loadData()
+        featurePresenter.loadPosts()
     }
 
-    override fun showData(data: List<Feature>) {
-        Log.e("test", data.toString())
+    override fun showPosts(posts: List<Post>) {
+        Log.e("test", posts.toString())
     }
 
     override fun showDataError() {

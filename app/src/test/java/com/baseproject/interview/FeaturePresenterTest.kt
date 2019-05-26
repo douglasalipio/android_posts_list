@@ -19,7 +19,7 @@ class FeaturePresenterTest {
     @Mock
     private lateinit var interactor: FeatureContract.Interactor
     @Captor
-    private lateinit var getFeatureCallbackCaptor: ArgumentCaptor<FeatureInteractor.GetFeatureCallback>
+    private lateinit var getFeatureCallbackCaptor: ArgumentCaptor<FeatureInteractor.GetPostCallback>
     private lateinit var presenter: FeaturePresenter
 
     @Before
@@ -30,21 +30,21 @@ class FeaturePresenterTest {
     }
 
     @Test
-    fun `should return a list of features`() {
-        val features = listOfFeature()
-        presenter.loadData()
+    fun `should return a list of posts`() {
+        val fakePosts = listOfFakePosts()
+        presenter.loadPosts()
         //`when`(appRepository.requestData()).thenReturn(Flowable.just(features))
         //verify(appRepository).requestData().subscribe()
-        verify(interactor).requestData(capture(getFeatureCallbackCaptor))
-        getFeatureCallbackCaptor.value.onFeatureLoaded(features)
-        verify(view).showData(features)
+        verify(interactor).requestPosts(capture(getFeatureCallbackCaptor))
+        getFeatureCallbackCaptor.value.onPostLoaded(fakePosts)
+        verify(view).showPosts(fakePosts)
     }
 
     @Test
     fun `should show a error message`() {
-        presenter.loadData()
-        verify(interactor).requestData(capture(getFeatureCallbackCaptor))
-        getFeatureCallbackCaptor.value.onDataNotAvailable("data not available.")
+        presenter.loadPosts()
+        verify(interactor).requestPosts(capture(getFeatureCallbackCaptor))
+        getFeatureCallbackCaptor.value.onPostNotAvailable("posts not available.")
         verify(view).showDataError()
     }
 }
