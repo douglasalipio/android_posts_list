@@ -1,11 +1,11 @@
-package com.babylon.mesquita.interview.feature
+package com.babylon.mesquita.interview.post
 
 import com.babylon.mesquita.interview.foundation.BasePresenter
 import com.babylon.mesquita.interview.foundation.BaseView
 import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.foundation.BaseInteractor
 
-interface FeatureContract {
+interface PostContract {
 
     interface View : BaseView<Presenter> {
         fun showPosts(posts: List<Post>)
@@ -19,7 +19,7 @@ interface FeatureContract {
     }
 
     interface Interactor : BaseInteractor {
-        fun requestPosts(getPostsCallback: FeatureInteractor.GetPostCallback)
+        fun requestPosts(getPostsCallback: PostInteractor.GetPostCallback)
     }
 
 }

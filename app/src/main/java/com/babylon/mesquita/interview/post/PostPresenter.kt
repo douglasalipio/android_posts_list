@@ -1,24 +1,23 @@
-package com.babylon.mesquita.interview.feature
+package com.babylon.mesquita.interview.post
 
-import android.util.Log
 import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.di.ActivityScoped
 import javax.inject.Inject
 
 @ActivityScoped
-class FeaturePresenter @Inject constructor(private val interactor: FeatureContract.Interactor) :
-    FeatureContract.Presenter {
+class PostPresenter @Inject constructor(private val interactor: PostContract.Interactor) :
+    PostContract.Presenter {
 
 
-    private var view: FeatureContract.View? = null
+    private var view: PostContract.View? = null
 
     override fun <T> takeView(view: T) {
-        this.view = view as FeatureContract.View
+        this.view = view as PostContract.View
     }
 
     override fun loadPosts() {
         view?.let {
-            interactor.requestPosts(object : FeatureInteractor.GetPostCallback {
+            interactor.requestPosts(object : PostInteractor.GetPostCallback {
                 override fun onPostLoaded(posts: List<Post>) {
                     it.showPosts(posts)
                 }

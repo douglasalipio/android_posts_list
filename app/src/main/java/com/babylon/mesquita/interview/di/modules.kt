@@ -7,8 +7,8 @@ import com.babylon.mesquita.interview.data.AppRepository
 import com.babylon.mesquita.interview.data.remote.ApiHelper
 import com.babylon.mesquita.interview.data.remote.RemoteDataSource
 import com.babylon.mesquita.interview.data.remote.ServiceAppFactory
-import com.babylon.mesquita.interview.feature.FeatureActivity
-import com.babylon.mesquita.interview.feature.FeatureModule
+import com.babylon.mesquita.interview.post.PostActivity
+import com.babylon.mesquita.interview.post.PostModule
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -17,8 +17,8 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityModule {
     @ActivityScoped
-    @ContributesAndroidInjector(modules = [FeatureModule::class])
-    abstract fun featureAcitivity(): FeatureActivity
+    @ContributesAndroidInjector(modules = [PostModule::class])
+    abstract fun postAcitivity(): PostActivity
 }
 
 @Module
