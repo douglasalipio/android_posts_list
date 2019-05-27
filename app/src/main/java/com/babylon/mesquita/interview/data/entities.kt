@@ -3,7 +3,7 @@ package com.babylon.mesquita.interview.data
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Author(
+data class Author(
     @SerializedName("id")
     @Expose
     var id: Int,
@@ -30,7 +30,7 @@ class Author(
     var company: Company
 )
 
-class Comment(
+data class Comment(
     @SerializedName("postId")
     @Expose
     var postId: Int,
@@ -48,7 +48,7 @@ class Comment(
     var body: String
 )
 
-class Post(
+data class Post(
     @SerializedName("userId")
     @Expose
     var authorId: Int,
@@ -60,10 +60,11 @@ class Post(
     var title: String,
     @SerializedName("body")
     @Expose
-    var body: String
+    var body: String,
+    var avatarUrl: String
 )
 
-class Company(
+data class Company(
     @SerializedName("name")
     @Expose
     var name: String,
@@ -75,7 +76,7 @@ class Company(
     var bs: String
 )
 
-class Address(
+data class Address(
     @SerializedName("street")
     @Expose
     var street: String,
@@ -100,4 +101,46 @@ data class Geo(
     @SerializedName("lng")
     @Expose
     var lng: String
+)
+
+data class Avatar(
+    @SerializedName("results")
+    @Expose
+    var results: List<Result>,
+    @SerializedName("info")
+    @Expose
+    var info: Info
+)
+
+data class Picture(
+    @SerializedName("large")
+    @Expose
+    var large: String,
+    @SerializedName("medium")
+    @Expose
+    var medium: String,
+    @SerializedName("thumbnail")
+    @Expose
+    var thumbnail: String
+)
+
+data class Result(
+    @SerializedName("picture")
+    @Expose
+    var picture: Picture
+)
+
+data class Info(
+    @SerializedName("seed")
+    @Expose
+    var seed: String,
+    @SerializedName("results")
+    @Expose
+    var results: Int,
+    @SerializedName("page")
+    @Expose
+    var page: Int,
+    @SerializedName("version")
+    @Expose
+    var version: String
 )
