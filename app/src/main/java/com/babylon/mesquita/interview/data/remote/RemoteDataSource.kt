@@ -14,4 +14,5 @@ class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 
     override fun requestComments() = apiHelper.getComments()
 
+    override fun requestAvatars(totalAvatars: Int) = apiHelper.getAvatars(AVATAR_URL, totalAvatars.toString())
 }

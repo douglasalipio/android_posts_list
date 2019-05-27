@@ -1,5 +1,7 @@
 package com.babylon.mesquita.interview.post
 
+import android.util.Log
+import com.babylon.mesquita.interview.data.Avatar
 import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.di.ActivityScoped
 import javax.inject.Inject
@@ -25,6 +27,17 @@ class PostPresenter @Inject constructor(private val interactor: PostContract.Int
                 override fun onPostNotAvailable(strError: String) {
                     it.showDataError()
                 }
+            })
+            interactor.requestAvatars(object : PostInteractor.GetAvatarCallback {
+                override fun onAvatarNotAvailable(strError: String) {
+                    Log.e("test", "Error avatar!")
+                }
+
+                override fun onAvatarLoaded(avatar: Avatar) {
+                    Log.e("test", avatar.toString())
+                }
+
+
             })
         }
     }

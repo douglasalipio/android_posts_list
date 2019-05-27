@@ -4,6 +4,7 @@
         <trust-anchors>
             <certificates src="system" />
             <certificates src="@raw/jsonplaceholder"/>
+            <certificates src="@raw/randomuser"/>
         </trust-anchors>
     </base-config>
 </network-security-config>

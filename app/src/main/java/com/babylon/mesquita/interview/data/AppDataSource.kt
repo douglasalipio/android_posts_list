@@ -10,4 +10,6 @@ interface AppDataSource {
     fun requestAuthors(): Observable<List<Author>>
 
     fun requestComments(): Observable<List<Comment>>
+
+    fun requestAvatars(totalAvatars: Int): Observable<Avatar>
 }

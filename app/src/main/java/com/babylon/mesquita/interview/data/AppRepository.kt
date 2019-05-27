@@ -12,4 +12,7 @@ class AppRepository @Inject constructor(private val remoteDataSource: RemoteData
     override fun requestAuthors() = remoteDataSource.requestAuthors()
 
     override fun requestComments() = remoteDataSource.requestComments()
+
+    override fun requestAvatars(totalAvatars: Int) = remoteDataSource.requestAvatars(totalAvatars)
+
 }

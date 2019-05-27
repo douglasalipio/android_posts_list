@@ -20,6 +20,7 @@ interface PostContract {
 
     interface Interactor : BaseInteractor {
         fun requestPosts(getPostsCallback: PostInteractor.GetPostCallback)
+        fun requestAvatars(getAvatarsCallback: PostInteractor.GetAvatarCallback)
     }
 
 }
