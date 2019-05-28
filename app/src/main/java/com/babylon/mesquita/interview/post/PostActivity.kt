@@ -2,12 +2,23 @@ package com.babylon.mesquita.interview.post
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Post
+import com.babylon.mesquita.interview.data.remote.PostDTO
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar.*
 import javax.inject.Inject
 
-class PostActivity : DaggerAppCompatActivity(), PostContract.View {
+class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     internal lateinit var postPresenter: PostContract.Presenter
@@ -17,9 +28,68 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View {
         setContentView(R.layout.activity_main)
         postPresenter.takeView(this)
         postPresenter.loadPosts()
+        setSupportActionBar(toolbar)
+        initComponents()
     }
 
-    override fun showPosts(posts: List<Post>) {
+    private fun initComponents() {
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        navView.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main2, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onBackPressed() {
+        drawerLayout?.let {
+            if (it.isDrawerOpen(GravityCompat.START)) {
+                it.closeDrawer(GravityCompat.START)
+            } else {
+                super.onBackPressed()
+            }
+        }
+    }
+
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            R.id.nav_gallery -> {
+
+            }
+            R.id.nav_home -> {
+                // Handle the camera action
+            }
+            R.id.nav_slideshow -> {
+
+            }
+            R.id.nav_tools -> {
+
+            }
+            R.id.nav_share -> {
+
+            }
+            R.id.nav_send -> {
+
+            }
+        }
+        drawerLayout?.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    override fun showPosts(posts: List<PostDTO>) {
         Log.e("test", posts.toString())
     }
 

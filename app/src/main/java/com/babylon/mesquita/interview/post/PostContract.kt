@@ -3,12 +3,13 @@ package com.babylon.mesquita.interview.post
 import com.babylon.mesquita.interview.foundation.BasePresenter
 import com.babylon.mesquita.interview.foundation.BaseView
 import com.babylon.mesquita.interview.data.Post
+import com.babylon.mesquita.interview.data.remote.PostDTO
 import com.babylon.mesquita.interview.foundation.BaseInteractor
 
 interface PostContract {
 
     interface View : BaseView<Presenter> {
-        fun showPosts(posts: List<Post>)
+        fun showPosts(posts: List<PostDTO>)
         fun showDataError()
     }
 

@@ -2,9 +2,10 @@ package com.babylon.mesquita.interview.post
 
 
 import com.babylon.mesquita.interview.data.AppDataSource
-import com.babylon.mesquita.interview.data.Avatar
-import com.babylon.mesquita.interview.data.Post
-import com.babylon.mesquita.interview.data.Result
+import com.babylon.mesquita.interview.data.remote.AuthorDTO
+import com.babylon.mesquita.interview.data.remote.AvatarDTO
+import com.babylon.mesquita.interview.data.remote.CommentDTO
+import com.babylon.mesquita.interview.data.remote.PostDTO
 import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers.io
@@ -16,14 +17,14 @@ class PostInteractor @Inject constructor(private val appRepository: AppDataSourc
 
     interface GetPostCallback {
 
-        fun onPostLoaded(posts: List<Post>)
+        fun onPostLoaded(triple: Triple<List<PostDTO>, List<CommentDTO>, List<AuthorDTO>>)
 
         fun onPostNotAvailable(strError: String)
     }
 
     interface GetAvatarCallback {
 
-        fun onAvatarLoaded(avatar: Avatar)
+        fun onAvatarLoaded(avatar: AvatarDTO)
 
         fun onAvatarNotAvailable(strError: String)
     }
@@ -39,14 +40,14 @@ class PostInteractor @Inject constructor(private val appRepository: AppDataSourc
     }
 
     override fun requestPosts(getPostsCallback: GetPostCallback) {
-        compositeDisposable.add(
-            appRepository.requestPosts()
+        appRepository.requestData()?.let {
+            compositeDisposable.add(it
                 .subscribeOn(io())
                 .observeOn(mainThread())
-                .doOnError { getPostsCallback.onPostNotAvailable(it.message ?: "") }
+                .doOnError { error -> getPostsCallback.onPostNotAvailable(error.message ?: "") }
                 .subscribe { onNext -> getPostsCallback.onPostLoaded(onNext) }
-        )
+            )
+        }
     }
-
 }
 

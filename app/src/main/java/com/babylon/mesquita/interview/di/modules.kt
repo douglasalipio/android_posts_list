@@ -40,8 +40,7 @@ class RepositoryModule {
 class NetworkModule {
     @Provides
     @Reusable
-    internal fun provideRemoteRepository(apiHelper: ApiHelper): RemoteDataSource =
-        RemoteDataSource(apiHelper)
+    internal fun provideRemoteRepository(apiHelper: ApiHelper): RemoteDataSource = RemoteDataSource(apiHelper)
 
     @Provides
     @Reusable
