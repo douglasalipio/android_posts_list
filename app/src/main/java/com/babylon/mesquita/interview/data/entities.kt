@@ -1,146 +1,32 @@
 package com.babylon.mesquita.interview.data
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.babylon.mesquita.interview.data.remote.Address
+import com.babylon.mesquita.interview.data.remote.Company
+
+data class Post(
+    val id: Int,
+    val title: String,
+    val body: String,
+    val avatarUrl: String,
+    val author: Author,
+    val comments: List<Comment>
+)
 
 data class Author(
-    @SerializedName("id")
-    @Expose
-    var id: Int,
-    @SerializedName("name")
-    @Expose
-    var name: String,
-    @SerializedName("username")
-    @Expose
-    var username: String,
-    @SerializedName("email")
-    @Expose
-    var email: String,
-    @SerializedName("address")
-    @Expose
-    var address: Address,
-    @SerializedName("phone")
-    @Expose
-    var phone: String,
-    @SerializedName("website")
-    @Expose
-    var website: String,
-    @SerializedName("company")
-    @Expose
-    var company: Company
+    val id: Int,
+    val name: String,
+    val username: String,
+    val email: String,
+    val address: Address,
+    val phone: String,
+    val website: String,
+    val company: Company
 )
 
 data class Comment(
-    @SerializedName("postId")
-    @Expose
-    var postId: Int,
-    @SerializedName("id")
-    @Expose
-    var id: Int,
-    @SerializedName("name")
-    @Expose
-    var name: String,
-    @SerializedName("email")
-    @Expose
-    var email: String,
-    @SerializedName("body")
-    @Expose
-    var body: String
-)
-
-data class Post(
-    @SerializedName("userId")
-    @Expose
-    var authorId: Int,
-    @SerializedName("id")
-    @Expose
-    var id: Int,
-    @SerializedName("title")
-    @Expose
-    var title: String,
-    @SerializedName("body")
-    @Expose
-    var body: String,
-    var avatarUrl: String
-)
-
-data class Company(
-    @SerializedName("name")
-    @Expose
-    var name: String,
-    @SerializedName("catchPhrase")
-    @Expose
-    var catchPhrase: String,
-    @SerializedName("bs")
-    @Expose
-    var bs: String
-)
-
-data class Address(
-    @SerializedName("street")
-    @Expose
-    var street: String,
-    @SerializedName("suite")
-    @Expose
-    var suite: String,
-    @SerializedName("city")
-    @Expose
-    var city: String,
-    @SerializedName("zipcode")
-    @Expose
-    var zipcode: String,
-    @SerializedName("geo")
-    @Expose
-    var geocode: Geo
-)
-
-data class Geo(
-    @SerializedName("lat")
-    @Expose
-    var lat: String,
-    @SerializedName("lng")
-    @Expose
-    var lng: String
-)
-
-data class Avatar(
-    @SerializedName("results")
-    @Expose
-    var results: List<Result>,
-    @SerializedName("info")
-    @Expose
-    var info: Info
-)
-
-data class Picture(
-    @SerializedName("large")
-    @Expose
-    var large: String,
-    @SerializedName("medium")
-    @Expose
-    var medium: String,
-    @SerializedName("thumbnail")
-    @Expose
-    var thumbnail: String
-)
-
-data class Result(
-    @SerializedName("picture")
-    @Expose
-    var picture: Picture
-)
-
-data class Info(
-    @SerializedName("seed")
-    @Expose
-    var seed: String,
-    @SerializedName("results")
-    @Expose
-    var results: Int,
-    @SerializedName("page")
-    @Expose
-    var page: Int,
-    @SerializedName("version")
-    @Expose
-    var version: String
+    val post: Post,
+    val id: Int,
+    val name: String,
+    val email: String,
+    val body: String
 )

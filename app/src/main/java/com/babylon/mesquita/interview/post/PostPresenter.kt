@@ -1,8 +1,11 @@
 package com.babylon.mesquita.interview.post
 
 import android.util.Log
-import com.babylon.mesquita.interview.data.Avatar
 import com.babylon.mesquita.interview.data.Post
+import com.babylon.mesquita.interview.data.remote.AuthorDTO
+import com.babylon.mesquita.interview.data.remote.AvatarDTO
+import com.babylon.mesquita.interview.data.remote.CommentDTO
+import com.babylon.mesquita.interview.data.remote.PostDTO
 import com.babylon.mesquita.interview.di.ActivityScoped
 import javax.inject.Inject
 
@@ -20,8 +23,8 @@ class PostPresenter @Inject constructor(private val interactor: PostContract.Int
     override fun loadPosts() {
         view?.let {
             interactor.requestPosts(object : PostInteractor.GetPostCallback {
-                override fun onPostLoaded(posts: List<Post>) {
-                    it.showPosts(posts)
+                override fun onPostLoaded(triple: Triple<List<PostDTO>, List<CommentDTO>, List<AuthorDTO>>) {
+                    Log.e("test", triple.toString())
                 }
 
                 override fun onPostNotAvailable(strError: String) {
@@ -33,11 +36,9 @@ class PostPresenter @Inject constructor(private val interactor: PostContract.Int
                     Log.e("test", "Error avatar!")
                 }
 
-                override fun onAvatarLoaded(avatar: Avatar) {
+                override fun onAvatarLoaded(avatar: AvatarDTO) {
                     Log.e("test", avatar.toString())
                 }
-
-
             })
         }
     }
