@@ -6,13 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import com.babylon.mesquita.interview.R
-import com.babylon.mesquita.interview.data.Post
-import com.babylon.mesquita.interview.data.remote.PostDTO
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.babylon.mesquita.interview.data.remote.PostResponse
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -27,7 +23,8 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         postPresenter.takeView(this)
-        postPresenter.loadPosts()
+        //postPresenter.loadPosts()
+        postPresenter.loadAuthors()
         setSupportActionBar(toolbar)
         initComponents()
     }
@@ -89,7 +86,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         return true
     }
 
-    override fun showPosts(posts: List<PostDTO>) {
+    override fun showPosts(posts: List<PostResponse>) {
         Log.e("test", posts.toString())
     }
 

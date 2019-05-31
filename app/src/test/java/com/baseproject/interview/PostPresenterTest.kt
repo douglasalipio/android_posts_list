@@ -33,9 +33,9 @@ class PostPresenterTest {
     fun `should return a list of posts`() {
         val fakePosts = listOfFakePosts()
         presenter.loadPosts()
-        //`when`(appRepository.requestData()).thenReturn(Flowable.just(features))
-        //verify(appRepository).requestData().subscribe()
-        verify(interactor).requestPosts(capture(getPostCallbackCaptor))
+        //`when`(appRepository.requestPostsAndComments()).thenReturn(Flowable.just(features))
+        //verify(appRepository).requestPostsAndComments().subscribe()
+        verify(interactor).getPosts(capture(getPostCallbackCaptor))
         getPostCallbackCaptor.value.onPostLoaded(fakePosts)
         verify(view).showPosts(fakePosts)
     }
@@ -43,7 +43,7 @@ class PostPresenterTest {
     @Test
     fun `should show a error message`() {
         presenter.loadPosts()
-        verify(interactor).requestPosts(capture(getPostCallbackCaptor))
+        verify(interactor).getPosts(capture(getPostCallbackCaptor))
         getPostCallbackCaptor.value.onPostNotAvailable("posts not available.")
         verify(view).showDataError()
     }

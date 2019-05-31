@@ -2,10 +2,10 @@ package com.babylon.mesquita.interview.post
 
 
 import com.babylon.mesquita.interview.data.AppDataSource
-import com.babylon.mesquita.interview.data.remote.AuthorDTO
-import com.babylon.mesquita.interview.data.remote.AvatarDTO
-import com.babylon.mesquita.interview.data.remote.CommentDTO
-import com.babylon.mesquita.interview.data.remote.PostDTO
+import com.babylon.mesquita.interview.data.assignAtributes
+import com.babylon.mesquita.interview.data.remote.AuthorResponse
+import com.babylon.mesquita.interview.data.remote.CommentResponse
+import com.babylon.mesquita.interview.data.remote.PostResponse
 import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers.io
@@ -13,39 +13,43 @@ import javax.inject.Inject
 
 class PostInteractor @Inject constructor(private val appRepository: AppDataSource) : PostContract.Interactor {
 
+
     private val compositeDisposable = CompositeDisposable()
 
     interface GetPostCallback {
 
-        fun onPostLoaded(triple: Triple<List<PostDTO>, List<CommentDTO>, List<AuthorDTO>>)
+        fun onPostLoaded(pair: Pair<List<PostResponse>, List<CommentResponse>>)
 
         fun onPostNotAvailable(strError: String)
+
     }
 
-    interface GetAvatarCallback {
+    interface GetAuthorCallback {
 
-        fun onAvatarLoaded(avatar: AvatarDTO)
+        fun onAuthorLoaded(authorResponse: List<AuthorResponse>)
 
-        fun onAvatarNotAvailable(strError: String)
+        fun onAuthorNotAvailable(strError: String)
     }
 
-    override fun requestAvatars(getAvatarsCallback: GetAvatarCallback) {
-        compositeDisposable.add(
-            appRepository.requestAvatars(10)
-                .subscribeOn(io())
-                .observeOn(mainThread())
-                .doOnError { getAvatarsCallback.onAvatarNotAvailable(it.message ?: "") }
-                .subscribe { onNext -> getAvatarsCallback.onAvatarLoaded(onNext) }
+    override fun getAuthors(getAuthorsCallback: GetAuthorCallback) {
+        compositeDisposable.add(appRepository.requestAuthorsAndAvatars()
+            .subscribeOn(io())
+            .doOnError { error -> getAuthorsCallback.onAuthorNotAvailable(error.message ?: "") }
+            .subscribe { authorResponse ->
+                getAuthorsCallback.onAuthorLoaded(authorResponse)
+            }
         )
     }
 
-    override fun requestPosts(getPostsCallback: GetPostCallback) {
-        appRepository.requestData()?.let {
+    override fun getPosts(getPostsCallback: GetPostCallback) {
+        appRepository.requestPostsAndComments()?.let {
             compositeDisposable.add(it
                 .subscribeOn(io())
                 .observeOn(mainThread())
                 .doOnError { error -> getPostsCallback.onPostNotAvailable(error.message ?: "") }
-                .subscribe { onNext -> getPostsCallback.onPostLoaded(onNext) }
+                .subscribe { pairRequest ->
+                    getPostsCallback.onPostLoaded(pairRequest)
+                }
             )
         }
     }

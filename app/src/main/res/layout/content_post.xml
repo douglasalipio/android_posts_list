@@ -6,7 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/app_bar"
-        tools:context=".post.Main2Activity">
+        tools:showIn="@layout/app_bar">
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

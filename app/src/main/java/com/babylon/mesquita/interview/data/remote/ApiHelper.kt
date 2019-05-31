@@ -11,18 +11,18 @@ const val AVATAR_URL = "https://randomuser.me/api/?inc=picture"
 
 interface ApiHelper {
 
-    @GET("posts")
-    fun getPosts(): Observable<List<PostDTO>>
+    @GET("/posts")
+    fun getPosts(): Observable<List<PostResponse>>
 
     @GET("/users")
-    fun getAuthors(): Observable<List<AuthorDTO>>
+    fun getAuthors(): Observable<List<AuthorResponse>>
 
     @GET("/comments")
-    fun getComments(): Observable<List<CommentDTO>>
+    fun getComments(): Observable<List<CommentResponse>>
 
     @GET
     fun getAvatars(
         @Url url: String = AVATAR_URL,
         @Query("results") totalAvatars: String
-    ): Observable<AvatarDTO>
+    ): Observable<AvatarResponse>
 }

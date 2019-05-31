@@ -24,6 +24,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true
+
     // Always show the result of every unit test, even if it passes.
     testOptions.unitTests.all {
         testLogging {
@@ -42,6 +45,10 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constrant_layout_version"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation "androidx.fragment:fragment:1.0.0"
+    implementation "androidx.vectordrawable:vectordrawable:1.0.1"
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation "androidx.cardview:cardview:1.0.0"
+
 
     //Network libraries
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -53,7 +60,7 @@ dependencies {
     //Reactive libraries
     implementation "io.reactivex.rxjava2:rxjava:$rx_java"
     implementation "io.reactivex.rxjava2:rxandroid:$rx_android_java"
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 
     // Dependencies for local unit tests
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -82,4 +89,12 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    //Database
+    androidTestImplementation "androidx.room:room-testing:2.0.0"
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+
+    //Circle image lib
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }
