@@ -1,9 +1,13 @@
 package com.babylon.mesquita.interview.data.remote
 
+import androidx.room.Entity
+import androidx.room.TypeConverters
+import com.babylon.mesquita.interview.data.local.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class AuthorDTO(
+@Entity(tableName = "author")
+data class AuthorResponse(
     @SerializedName("id")
     @Expose
     var id: Int,
@@ -16,6 +20,7 @@ data class AuthorDTO(
     @SerializedName("email")
     @Expose
     var email: String,
+    @TypeConverters(AddressConvert::class)
     @SerializedName("address")
     @Expose
     var address: Address,
@@ -25,12 +30,15 @@ data class AuthorDTO(
     @SerializedName("website")
     @Expose
     var website: String,
+    @TypeConverters(CompanyConvert::class)
     @SerializedName("company")
     @Expose
-    var company: Company
+    var company: Company,
+    var urlAvatar: String
 )
 
-data class CommentDTO(
+@Entity(tableName = "comment")
+data class CommentResponse(
     @SerializedName("postId")
     @Expose
     var postId: Int,
@@ -48,7 +56,8 @@ data class CommentDTO(
     var body: String
 )
 
-data class PostDTO(
+@Entity(tableName = "post")
+data class PostResponse(
     @SerializedName("userId")
     @Expose
     var authorId: Int,
@@ -64,12 +73,15 @@ data class PostDTO(
     var avatarUrl: String
 )
 
-data class AvatarDTO(
+@Entity(tableName = "avatar")
+data class AvatarResponse(
     @SerializedName("results")
     @Expose
+    @TypeConverters(ResultConvert::class)
     var results: List<Result>
 )
 
+@Entity
 data class Company(
     @SerializedName("name")
     @Expose
@@ -82,6 +94,7 @@ data class Company(
     var bs: String
 )
 
+@Entity
 data class Address(
     @SerializedName("street")
     @Expose
@@ -95,11 +108,13 @@ data class Address(
     @SerializedName("zipcode")
     @Expose
     var zipcode: String,
+    @TypeConverters(GeoConvert::class)
     @SerializedName("geo")
     @Expose
     var geocode: Geo
 )
 
+@Entity
 data class Geo(
     @SerializedName("lat")
     @Expose
@@ -109,6 +124,7 @@ data class Geo(
     var lng: String
 )
 
+@Entity
 data class Picture(
     @SerializedName("large")
     @Expose
@@ -121,14 +137,10 @@ data class Picture(
     var thumbnail: String
 )
 
+@Entity
 data class Result(
+    @TypeConverters(PictureConvert::class)
     @SerializedName("picture")
     @Expose
     var picture: Picture
-)
-
-data class ZipDTO(
-    val postDTO: List<PostDTO>,
-    val commentsDTO: List<CommentDTO>,
-    val authorDTO: List<AuthorDTO>
 )

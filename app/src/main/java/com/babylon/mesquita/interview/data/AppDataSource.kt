@@ -1,16 +1,17 @@
 package com.babylon.mesquita.interview.data
 
-import com.babylon.mesquita.interview.data.remote.AuthorDTO
-import com.babylon.mesquita.interview.data.remote.AvatarDTO
-import com.babylon.mesquita.interview.data.remote.CommentDTO
-import com.babylon.mesquita.interview.data.remote.PostDTO
+import com.babylon.mesquita.interview.data.remote.AuthorResponse
+import com.babylon.mesquita.interview.data.remote.AvatarResponse
+import com.babylon.mesquita.interview.data.remote.CommentResponse
+import com.babylon.mesquita.interview.data.remote.PostResponse
 import io.reactivex.Observable
 
 interface AppDataSource {
 
-    fun requestData(): Observable<Triple<List<PostDTO>, List<CommentDTO>, List<AuthorDTO>>>? {
+    fun requestPostsAndComments(): Observable<Pair<List<PostResponse>, List<CommentResponse>>>? {
         return null
     }
 
-    fun requestAvatars(totalAvatar: Int): Observable<AvatarDTO>
+    fun requestAuthorsAndAvatars(): Observable<List<AuthorResponse>>
+
 }
