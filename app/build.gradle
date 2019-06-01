@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: 'config/version.gradle'
 
+
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -18,6 +20,10 @@ android {
             abiFilters "armeabi-v7a", "x86", "armeabi", "mips"
         }
     }
+    androidExtensions {
+        experimental = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,7 +32,6 @@ android {
     }
 
     android.defaultConfig.vectorDrawables.useSupportLibrary = true
-
     // Always show the result of every unit test, even if it passes.
     testOptions.unitTests.all {
         testLogging {
@@ -34,7 +39,6 @@ android {
         }
     }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
