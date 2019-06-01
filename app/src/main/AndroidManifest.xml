@@ -17,7 +17,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-                android:name=".postdetail.PostDetail"
+                android:name=".postdetail.PostDetailActivity"
                 android:label="@string/title_activity_post_detail">
         </activity>
 

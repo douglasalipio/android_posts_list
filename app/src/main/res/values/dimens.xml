@@ -15,4 +15,13 @@
     <dimen name="post_title_margin_top">4dp</dimen>
     <dimen name="post_title_margin_left">12dp</dimen>
     <dimen name="small_margin">5dp</dimen>
+    <dimen name="text_granularity">1sp</dimen>
+    <dimen name="text_size_min">16sp</dimen>
+    <dimen name="text_size_max">100sp</dimen>
+    <dimen name="text_big">18sp</dimen>
+    <dimen name="biggest_marge">40dp</dimen>
+    <dimen name="margin_top_large">40dp</dimen>
+    <dimen name="text_large">28sp</dimen>
+    <dimen name="text_biggest">20sp</dimen>
+    <dimen name="margin_top_big">25dp</dimen>
 </resources>
