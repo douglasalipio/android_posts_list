@@ -33,8 +33,8 @@ class PostPresenterTest {
     fun `should return a list of posts`() {
         val fakePosts = listOfFakePosts()
         presenter.loadPosts()
-        //`when`(appRepository.requestPostsAndComments()).thenReturn(Flowable.just(features))
-        //verify(appRepository).requestPostsAndComments().subscribe()
+        //`when`(appRepository.requestData()).thenReturn(Flowable.just(features))
+        //verify(appRepository).requestData().subscribe()
         verify(interactor).getPosts(capture(getPostCallbackCaptor))
         getPostCallbackCaptor.value.onPostLoaded(fakePosts)
         verify(view).showPosts(fakePosts)

@@ -8,10 +8,11 @@ import io.reactivex.Observable
 
 interface AppDataSource {
 
-    fun requestPostsAndComments(): Observable<Pair<List<PostResponse>, List<CommentResponse>>>? {
+    fun requestAvatars(totalAvatars: Int): Observable<AvatarResponse>
+
+    fun requestData(): Observable<Triple<List<PostResponse>, List<CommentResponse>, List<AuthorResponse>>>? {
         return null
     }
 
-    fun requestAuthorsAndAvatars(): Observable<List<AuthorResponse>>
-
+    fun requestAuthors(): Observable<List<AuthorResponse>>
 }
