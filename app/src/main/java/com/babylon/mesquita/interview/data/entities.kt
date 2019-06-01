@@ -1,15 +1,20 @@
 package com.babylon.mesquita.interview.data
 
-import com.babylon.mesquita.interview.data.remote.*
 
+import android.os.Parcelable
+import com.babylon.mesquita.interview.data.remote.*
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Post(
     var id: Int,
     var title: String,
     var body: String,
     var comments: List<Comment> = mutableListOf(),
     var author: Author
-)
+) : Parcelable
 
+@Parcelize
 data class Author(
     var id: Int,
     var name: String,
@@ -20,29 +25,23 @@ data class Author(
     var website: String,
     var company: Company,
     var avatarUrl: String
-)
+) : Parcelable
 
+@Parcelize
 data class Comment(
     var postId: Int,
     var id: Int,
     var name: String,
     var email: String,
     var body: String
-)
+) : Parcelable
 
 private fun List<AuthorResponse>.makeAuthors(): List<Author> {
     val authors = mutableListOf<Author>()
     forEach {
         val author = Author(
-            it.id,
-            it.name,
-            it.username,
-            it.email,
-            it.address,
-            it.phone,
-            it.website,
-            it.company,
-            RANDOM_IMAGE
+            it.id, it.name, it.username, it.email, it.address,
+            it.phone, it.website, it.company, RANDOM_IMAGE
         )
         authors.add(author)
     }

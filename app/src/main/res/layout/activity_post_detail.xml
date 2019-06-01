@@ -11,7 +11,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/postToolbar"
+                android:id="@+id/postDetailToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
@@ -19,6 +19,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_post"/>
+    <include layout="@layout/content_post_detail"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

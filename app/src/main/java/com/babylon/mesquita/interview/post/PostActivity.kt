@@ -1,5 +1,6 @@
 package com.babylon.mesquita.interview.post
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -9,6 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Post
+import com.babylon.mesquita.interview.postdetail.PostDetail
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +22,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
 
     @Inject
     internal lateinit var postPresenter: PostContract.Presenter
-    private val postClick: (Int) -> Unit = this::onPostClick
+    private val postClick: (Post) -> Unit = this::onPostClick
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,14 +30,14 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         setContentView(R.layout.activity_main)
         postPresenter.takeView(this)
         postPresenter.loadPosts()
-        setSupportActionBar(toolbar)
+        setSupportActionBar(postToolbar)
         initComponents()
     }
 
     private fun initComponents() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawerLayout, postToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -98,8 +100,10 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         }
     }
 
-    private fun onPostClick(postion: Int) {
-
+    private fun onPostClick(post: Post) {
+        val intent = Intent(this, PostDetail::class.java)
+        intent.putExtra("test", post)
+        startActivity(intent)
     }
 
     override fun showDataError() {

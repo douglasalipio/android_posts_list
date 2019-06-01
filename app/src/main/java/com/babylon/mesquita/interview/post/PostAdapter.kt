@@ -9,7 +9,7 @@ import com.babylon.mesquita.interview.data.Post
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.post_card_view.view.*
 
-class PostAdapter(private val onPostClick: (Int) -> Unit) : RecyclerView.Adapter<PostAdapter.PostHolder>() {
+class PostAdapter(private val onPostClick: (Post) -> Unit) : RecyclerView.Adapter<PostAdapter.PostHolder>() {
 
     private val posts = mutableListOf<Post>()
 
@@ -25,7 +25,7 @@ class PostAdapter(private val onPostClick: (Int) -> Unit) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
-        holder.bind(posts[position], clickListener = { onPostClick(position) })
+        holder.bind(posts[position], clickListener = { onPostClick(posts[position]) })
     }
 
     override fun getItemCount() = posts.size

@@ -1,12 +1,13 @@
 package com.babylon.mesquita.interview.data.remote
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.TypeConverters
 import com.babylon.mesquita.interview.data.local.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "author")
 data class AuthorResponse(
     @SerializedName("id")
     @Expose
@@ -37,7 +38,6 @@ data class AuthorResponse(
     var urlAvatar: String = RANDOM_IMAGE
 )
 
-@Entity(tableName = "comment")
 data class CommentResponse(
     @SerializedName("postId")
     @Expose
@@ -56,7 +56,6 @@ data class CommentResponse(
     var body: String
 )
 
-@Entity(tableName = "post")
 data class PostResponse(
     @SerializedName("userId")
     @Expose
@@ -80,8 +79,7 @@ data class AvatarResponse(
     @TypeConverters(ResultConvert::class)
     var results: List<Result>
 )
-
-@Entity
+@Parcelize
 data class Company(
     @SerializedName("name")
     @Expose
@@ -92,9 +90,9 @@ data class Company(
     @SerializedName("bs")
     @Expose
     var bs: String
-)
+) : Parcelable
 
-@Entity
+@Parcelize
 data class Address(
     @SerializedName("street")
     @Expose
@@ -112,9 +110,9 @@ data class Address(
     @SerializedName("geo")
     @Expose
     var geocode: Geo
-)
+) : Parcelable
 
-@Entity
+@Parcelize
 data class Geo(
     @SerializedName("lat")
     @Expose
@@ -122,9 +120,9 @@ data class Geo(
     @SerializedName("lng")
     @Expose
     var lng: String
-)
+) : Parcelable
 
-@Entity
+@Parcelize
 data class Picture(
     @SerializedName("large")
     @Expose
@@ -135,12 +133,12 @@ data class Picture(
     @SerializedName("thumbnail")
     @Expose
     var thumbnail: String
-)
+) : Parcelable
 
-@Entity
+@Parcelize
 data class Result(
     @TypeConverters(PictureConvert::class)
     @SerializedName("picture")
     @Expose
     var picture: Picture
-)
+) : Parcelable
