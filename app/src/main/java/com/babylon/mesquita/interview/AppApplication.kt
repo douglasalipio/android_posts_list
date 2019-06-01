@@ -1,10 +1,12 @@
 package com.babylon.mesquita.interview
 
+import android.content.Context
 import androidx.room.Room
 import com.babylon.mesquita.interview.data.local.AppDatabase
 import com.babylon.mesquita.interview.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+
 
 class AppApplication : DaggerApplication() {
 
@@ -14,7 +16,6 @@ class AppApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        //initDatabase()
     }
 
     private fun initDatabase() {

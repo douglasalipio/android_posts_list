@@ -1,27 +1,32 @@
 package com.babylon.mesquita.interview.postdetail
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity;
-import com.babylon.mesquita.interview.R
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.post_detail_container.*
+import android.view.MenuItem
 
-import kotlinx.android.synthetic.main.activity_post_detail.*
 
 class PostDetail : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setContentView(com.babylon.mesquita.interview.R.layout.post_detail_container)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post_detail)
         initToolbar()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
+
     private fun initToolbar() {
-        setSupportActionBar(postDetailToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        postDetailToolbar.let {
+            setSupportActionBar(it)
+            supportActionBar?.setDisplayShowTitleEnabled(false)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
     }
 }
