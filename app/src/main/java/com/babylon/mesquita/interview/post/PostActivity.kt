@@ -13,9 +13,9 @@ import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.postdetail.PostDetail
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.post.*
 import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.content_post.*
+import kotlinx.android.synthetic.main.post_content.*
 import javax.inject.Inject
 
 class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationView.OnNavigationItemSelectedListener {
@@ -27,7 +27,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.post)
         postPresenter.takeView(this)
         postPresenter.loadPosts()
         setSupportActionBar(postToolbar)

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Post
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.post_card_view.view.*
+import kotlinx.android.synthetic.main.post_card_item.view.*
 
 class PostAdapter(private val onPostClick: (Post) -> Unit) : RecyclerView.Adapter<PostAdapter.PostHolder>() {
 
@@ -20,7 +20,7 @@ class PostAdapter(private val onPostClick: (Post) -> Unit) : RecyclerView.Adapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.post_card_view, parent, false)
+            .inflate(R.layout.post_card_item, parent, false)
         return PostHolder(view)
     }
 
