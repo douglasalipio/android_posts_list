@@ -7,16 +7,81 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/post_detail_container"
-        tools:context=".postdetail.PostDetail">
+        tools:context=".postdetail.PostDetailActivity">
 
     <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include
-                android:id="@+id/postContent"
-                layout="@layout/post_detail_content"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tagPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="magnam facilis"
+                    android:fontFamily="@font/rubik_regular"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    app:autoSizeStepGranularity="@dimen/text_granularity"
+                    app:autoSizeMinTextSize="@dimen/text_size_min"
+                    app:autoSizeMaxTextSize="@dimen/text_size_max"
+                    android:textSize="@dimen/text_big"
+                    android:layout_marginTop="@dimen/biggest_marge"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:layout_marginRight="@dimen/base_margin"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:layout_marginLeft="@dimen/base_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/postTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_bold"
+                    tools:text="ea molestias quasi exercitationem repellat qui ipsa sit aut"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    android:textColor="@android:color/background_dark"
+                    app:autoSizeMinTextSize="@dimen/text_size_min"
+                    app:autoSizeMaxTextSize="@dimen/text_size_max"
+                    app:autoSizeStepGranularity="@dimen/text_granularity"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:layout_marginRight="@dimen/base_margin"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:layout_marginTop="@dimen/margin_top_big"
+                    android:layout_marginLeft="@dimen/base_margin"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tagPost"/>
+
+            <TextView
+                    android:id="@+id/postBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    tools:text="est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+                    android:textColor="@color/gray_light"
+                    android:layout_marginTop="@dimen/margin_top_large"
+                    android:textSize="@dimen/text_biggest"
+                    android:lineSpacingExtra="@dimen/base_margin"
+                    app:autoSizeMinTextSize="@dimen/text_size_min"
+                    app:autoSizeMaxTextSize="@dimen/text_size_max"
+                    app:autoSizeStepGranularity="@dimen/text_granularity"
+                    app:layout_constraintTop_toBottomOf="@+id/postTitle"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 

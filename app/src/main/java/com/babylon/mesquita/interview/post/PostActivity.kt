@@ -10,7 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Post
-import com.babylon.mesquita.interview.postdetail.PostDetail
+import com.babylon.mesquita.interview.postdetail.PostDetailActivity
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.post.*
@@ -101,7 +101,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
     }
 
     private fun onPostClick(post: Post) {
-        val intent = Intent(this, PostDetail::class.java)
+        val intent = Intent(this, PostDetailActivity::class.java)
         intent.putExtra("test", post)
         startActivity(intent)
     }
