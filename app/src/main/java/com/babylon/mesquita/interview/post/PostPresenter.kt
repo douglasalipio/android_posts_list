@@ -1,6 +1,7 @@
 package com.babylon.mesquita.interview.post
 
 import android.util.Log
+import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.data.remote.AuthorResponse
 import com.babylon.mesquita.interview.data.remote.CommentResponse
 import com.babylon.mesquita.interview.data.remote.PostResponse
@@ -34,9 +35,10 @@ class PostPresenter @Inject constructor(private val interactor: PostContract.Int
     override fun loadPosts() {
         view?.let {
             interactor.getPosts(object : PostInteractor.GetPostCallback {
-                override fun onPostLoaded(pair: Pair<List<PostResponse>, List<CommentResponse>>) {
-                    Log.e("test", pair.toString())
+                override fun onPostLoaded(posts: List<Post>) {
+                    it.showPosts(posts)
                 }
+
                 override fun onPostNotAvailable(strError: String) {
                     it.showDataError()
                 }

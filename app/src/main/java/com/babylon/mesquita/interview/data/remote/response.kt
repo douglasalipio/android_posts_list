@@ -34,7 +34,7 @@ data class AuthorResponse(
     @SerializedName("company")
     @Expose
     var company: Company,
-    var urlAvatar: String
+    var urlAvatar: String = RANDOM_IMAGE
 )
 
 @Entity(tableName = "comment")

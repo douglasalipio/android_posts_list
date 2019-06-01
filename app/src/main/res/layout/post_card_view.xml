@@ -3,62 +3,75 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardItem"
         style="@style/CardView.Light"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardUseCompatPadding="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:layout_marginTop="@dimen/base_margin"
+        android:layout_marginStart="@dimen/base_margin"
+        android:layout_marginEnd="@dimen/base_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/content_card_padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/avatar_image"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                app:civ_border_width="2dp"
+                android:id="@+id/postAvatarImg"
+                android:layout_width="@dimen/avatar_width"
+                android:layout_height="@dimen/avatar_height"
+                app:civ_border_width="1dp"
                 android:scaleType="centerCrop"
-                app:civ_border_color="#FF000000"
+                app:civ_border_color="@color/colorPrimary"
                 android:src="@drawable/place_holder_avatar"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="@dimen/base_margin"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-                android:id="@+id/title_text"
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/postTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/post_title_margin_top"
                 android:layout_marginStart="12dp"
-                android:layout_marginEnd="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="#DE000000"
-                app:layout_constraintTop_toTopOf="@+id/avatar_image"
-                app:layout_constraintStart_toEndOf="@+id/avatar_image"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toTopOf="@+id/postAvatarImg"
+                app:layout_constraintStart_toEndOf="@+id/postAvatarImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="16dp"
-                tools:text="How to create a Android App in 30 minutes"/>
+                android:layout_marginLeft="@dimen/post_title_margin_left"
+                android:lines="2"
+                android:ellipsize="end"
+                app:autoSizeStepGranularity="1sp"
+                tools:text="How to create a Android App in 30"/>
 
-        <TextView
-                android:id="@+id/subtitle_text"
-                android:layout_width="0dp"
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/postSubtitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="4dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="#8A000000"
-                app:layout_constraintStart_toEndOf="@+id/avatar_image"
+                android:textColor="@color/gray_light"
+                tools:text="30"
+                android:layout_marginEnd="@dimen/small_margin"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
+                app:layout_constraintTop_toBottomOf="@+id/postTitle"
+                android:layout_marginRight="@dimen/small_margin"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/comment_width"
+                android:layout_height="@dimen/comment_height"
+                app:srcCompat="@drawable/baseline_comment_black_18"
+                android:id="@+id/appCompatImageView"
+                android:layout_marginTop="@dimen/small_margin"
+                app:layout_constraintTop_toBottomOf="@+id/postTitle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@+id/avatar_image"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="16dp"
-                tools:text="30 comments"/>
+                android:layout_marginEnd="@dimen/base_margin"
+                android:layout_marginRight="@dimen/base_margin"
+                />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

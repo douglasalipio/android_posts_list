@@ -30,27 +30,26 @@ data class Comment(
     var body: String
 )
 
-private fun List<AuthorResponse>.convertToAuthors(): List<Author> {
+private fun List<AuthorResponse>.makeAuthors(): List<Author> {
     val authors = mutableListOf<Author>()
     forEach {
-        authors.add(
-            Author(
-                it.id,
-                it.name,
-                it.username,
-                it.email,
-                it.address,
-                it.phone,
-                it.website,
-                it.company,
-                it.urlAvatar
-            )
+        val author = Author(
+            it.id,
+            it.name,
+            it.username,
+            it.email,
+            it.address,
+            it.phone,
+            it.website,
+            it.company,
+            RANDOM_IMAGE
         )
+        authors.add(author)
     }
     return authors
 }
 
-private fun List<CommentResponse>.convertToComments(postId: Int): List<Comment> {
+private fun List<CommentResponse>.makeComments(postId: Int): List<Comment> {
     val comments = mutableListOf<Comment>()
     forEach {
         comments.add(Comment(postId, it.id, it.name, it.email, it.body))
@@ -58,19 +57,17 @@ private fun List<CommentResponse>.convertToComments(postId: Int): List<Comment> 
     return comments
 }
 
-fun List<PostResponse>.assignAtributes(commentResponse: List<CommentResponse>, authorResponse: List<AuthorResponse>) {
+fun List<PostResponse>.makePosts(
+    commentResponse: List<CommentResponse>,
+    authorResponse: List<AuthorResponse>
+): List<Post> {
     val posts = mutableListOf<Post>()
-    forEach { postResponse ->
-        val postComments = commentResponse.filter { postResponse.authorId == it.postId }
-        val postAuthor = authorResponse.convertToAuthors().last { postResponse.authorId == it.id }
-        posts.add(
-            Post(
-                postResponse.id,
-                postResponse.title,
-                postResponse.body,
-                postComments.convertToComments(postResponse.id),
-                postAuthor
-            )
-        )
+    forEach {
+        val commentsResponse = commentResponse.filter { comment -> it.authorId == comment.postId }
+        val author = authorResponse.makeAuthors().last { author -> it.authorId == author.id }
+        val comments = commentsResponse.makeComments(it.id)
+        val post = Post(it.id, it.title, it.body, comments, author)
+        posts.add(post)
     }
+    return posts
 }

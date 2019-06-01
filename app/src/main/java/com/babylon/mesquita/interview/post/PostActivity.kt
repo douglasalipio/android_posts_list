@@ -6,25 +6,28 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.babylon.mesquita.interview.R
-import com.babylon.mesquita.interview.data.remote.PostResponse
+import com.babylon.mesquita.interview.data.Post
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
+import kotlinx.android.synthetic.main.content_post.*
 import javax.inject.Inject
 
 class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     internal lateinit var postPresenter: PostContract.Presenter
+    private val postClick: (Int) -> Unit = this::onPostClick
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         postPresenter.takeView(this)
-        //postPresenter.loadPosts()
-        postPresenter.loadAuthors()
+        postPresenter.loadPosts()
         setSupportActionBar(toolbar)
         initComponents()
     }
@@ -86,11 +89,21 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         return true
     }
 
-    override fun showPosts(posts: List<PostResponse>) {
-        Log.e("test", posts.toString())
+    override fun showPosts(posts: List<Post>) {
+        val adapter = PostAdapter(postClick)
+        adapter.addAll(posts)
+        postList?.let {
+            it.layoutManager = LinearLayoutManager(this)
+            it.adapter = adapter
+        }
+    }
+
+    private fun onPostClick(postion: Int) {
+
     }
 
     override fun showDataError() {
         Log.e("test", "feature error.")
     }
 }
+
