@@ -8,7 +8,7 @@ import retrofit2.http.Url
 
 const val BASE_URL = " https://jsonplaceholder.typicode.com/"
 const val AVATAR_URL = "https://randomuser.me/api/?inc=picture"
-const val RANDOM_IMAGE = "https://loremflickr.com/320/240/brazil,rio"
+
 
 interface ApiHelper {
 

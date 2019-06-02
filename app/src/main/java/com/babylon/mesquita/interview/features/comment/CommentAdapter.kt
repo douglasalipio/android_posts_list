@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.comment_card_item.view.*
 
 class CommentAdapter(
     private val onReplyClick: () -> Unit,
-    private val onRecomendClick: () -> Unit,
+    private val onRecommendClick: () -> Unit,
     private val onFlagClick: () -> Unit
 ) : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
 
@@ -33,7 +33,7 @@ class CommentAdapter(
         holder.bind(
             comments[position],
             replyClick = { onReplyClick() },
-            recommendClick = { onRecomendClick() },
+            recommendClick = { onRecommendClick() },
             flagClick = { onFlagClick() })
     }
 
