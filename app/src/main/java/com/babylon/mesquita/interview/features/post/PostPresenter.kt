@@ -1,5 +1,6 @@
 package com.babylon.mesquita.interview.features.post
 
+import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.di.ActivityScoped
 import org.secfirst.umbrella.misc.AppExecutors.Companion.uiContext
 import org.secfirst.umbrella.misc.launchSilent
@@ -13,13 +14,15 @@ class PostPresenter @Inject constructor(private val interactor: PostContract.Int
 
     override fun loadDataBlog() {
         launchSilent(uiContext) {
-            interactor.let {
-                val posts = it.getPosts()
-                if (posts.isNotEmpty())
+            interactor.getPosts(object : PostInteractor.GetPostCallback {
+                override fun onPostLoaded(posts: List<Post>) {
                     view?.showPosts(posts)
-                else
+                }
+
+                override fun onPostNotAvailable() {
                     view?.showDataError()
-            }
+                }
+            })
         }
     }
 
