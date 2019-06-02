@@ -1,4 +1,4 @@
-package com.baseproject.interview.util
+package com.baseproject.interview.dataSet
 
 import kotlin.random.Random
 

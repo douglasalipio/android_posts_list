@@ -1,11 +1,14 @@
 package com.baseproject.interview
 
+import com.babylon.mesquita.interview.data.loremIpsumTag
 import com.babylon.mesquita.interview.data.makeAuthors
+import com.babylon.mesquita.interview.data.makeAvatars
 import com.babylon.mesquita.interview.data.makeComments
 import com.babylon.mesquita.interview.data.remote.AuthorResponse
 import com.babylon.mesquita.interview.data.remote.CommentResponse
 import com.baseproject.interview.dataSet.*
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 
 import org.junit.Test
 
@@ -46,5 +49,22 @@ class PostTest {
     fun `should return an empty author list`() {
         val authorResponse = mutableListOf<AuthorResponse>()
         assert(authorResponse.makeAuthors().isEmpty())
+    }
+
+    @Test
+    fun `should return an title`() {
+        assertNotNull(loremIpsumTag())
+    }
+
+    @Test
+    fun `should return an avatar list`() {
+        val fakeAvatarResponse = fakeAvatarUrl()
+        fakeAvatarResponse?.let {
+            val fakeUrls = fakeAvatarResponse.makeAvatars()
+            if (fakeUrls.isNotEmpty())
+                assert(true)
+            else
+                assert(false)
+        }
     }
 }

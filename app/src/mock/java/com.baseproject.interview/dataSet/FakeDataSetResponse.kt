@@ -1,10 +1,6 @@
 package com.baseproject.interview.dataSet
 
-import com.babylon.mesquita.interview.data.remote.AuthorResponse
-import com.babylon.mesquita.interview.data.remote.CommentResponse
-import com.babylon.mesquita.interview.data.remote.PostResponse
-import com.baseproject.interview.util.numberRandom
-import com.baseproject.interview.util.stringRandom
+import com.babylon.mesquita.interview.data.remote.*
 
 fun fakeCommentResponse() = CommentResponse(
     numberRandom(), numberRandom(), stringRandom(), stringRandom(),
@@ -31,6 +27,7 @@ fun fakeAuthorsResponse(): List<AuthorResponse> {
     }
     return fakeList
 }
+
 fun fakePostsResponse(): List<PostResponse> {
     val fakeList = mutableListOf<PostResponse>()
     for (index in 0..10) {
@@ -41,10 +38,11 @@ fun fakePostsResponse(): List<PostResponse> {
 
 fun fakePostResponse() = PostResponse(numberRandom(), numberRandom(), stringRandom(), stringRandom(), stringRandom())
 
-fun fakeAvatarUrl(totalUrl: Int): MutableList<String> {
-    val urls = mutableListOf<String>()
-    for (index in 0..totalUrl) {
-        urls.add(stringRandom())
-    }
-    return urls
+fun fakeAvatarUrl(): AvatarResponse? {
+    val fakeAvatar: AvatarResponse?
+    val result = Result(Picture(stringRandom(), stringRandom(), stringRandom()))
+    val results = mutableListOf<Result>()
+    results.add(result)
+    fakeAvatar = AvatarResponse(results)
+    return fakeAvatar
 }

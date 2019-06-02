@@ -19,4 +19,5 @@
     <string name="title_activity_comment">CommentActivity</string>
     <string name="flag_comment">Flag</string>
     <string name="create_new_comment_message">Mock feature</string>
+    <string name="communicate">Communicate</string>
 </resources>

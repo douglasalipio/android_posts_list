@@ -74,24 +74,8 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_home -> {
-                // Handle the camera action
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_tools -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
+            R.id.nav_home -> ""
+            R.id.nav_share -> ""
         }
         drawerLayout?.closeDrawer(GravityCompat.START)
         return true

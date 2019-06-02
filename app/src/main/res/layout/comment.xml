@@ -29,6 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            pocketBlog:srcCompat="@android:drawable/ic_menu_edit"/>
+            pocketBlog:srcCompat="@drawable/baseline_add_comment_white_18"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

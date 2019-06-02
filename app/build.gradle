@@ -23,6 +23,15 @@ android {
         experimental = true
     }
 
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/mock/java"
+        }
+        test {
+            java.srcDirs += "src/mock/java"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -76,6 +85,7 @@ dependencies {
     // Android Testing Support Library's runner and rules
     androidTestImplementation "androidx.test:runner:$runner_version"
     androidTestImplementation "androidx.test:rules:$runner_version"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 
     // Dependencies for Android unit tests
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
