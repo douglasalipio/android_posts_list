@@ -8,7 +8,11 @@ import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Comment
 import kotlinx.android.synthetic.main.comment_card_item.view.*
 
-class CommentAdapter : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
+class CommentAdapter(
+    private val onReplyClick: () -> Unit,
+    private val onRecomendClick: () -> Unit,
+    private val onFlagClick: () -> Unit
+) : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
 
     private val comments = mutableListOf<Comment>()
 
@@ -26,15 +30,27 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
     override fun getItemCount() = comments.size
 
     override fun onBindViewHolder(holder: CommentHolder, position: Int) {
-        holder.bind(comments[position])
+        holder.bind(
+            comments[position],
+            replyClick = { onReplyClick() },
+            recommendClick = { onRecomendClick() },
+            flagClick = { onFlagClick() })
     }
 
     class CommentHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(comment: Comment) {
+        fun bind(
+            comment: Comment,
+            replyClick: (CommentHolder) -> Unit,
+            recommendClick: (CommentHolder) -> Unit,
+            flagClick: (CommentHolder) -> Unit
+        ) {
             with(comment) {
                 itemView.commentTitle.text = name
                 itemView.responseEmail.text = email
                 itemView.comment.text = body
+                itemView.replay.setOnClickListener { replyClick(this@CommentHolder) }
+                itemView.flagComment.setOnClickListener { flagClick(this@CommentHolder) }
+                itemView.recommend.setOnClickListener { recommendClick(this@CommentHolder) }
             }
         }
     }
