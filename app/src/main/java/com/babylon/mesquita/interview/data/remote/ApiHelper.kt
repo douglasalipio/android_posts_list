@@ -1,6 +1,7 @@
 package com.babylon.mesquita.interview.data.remote
 
 import io.reactivex.Observable
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Url
@@ -12,17 +13,17 @@ const val RANDOM_IMAGE = "https://loremflickr.com/320/240/brazil,rio"
 interface ApiHelper {
 
     @GET("/posts")
-    fun getPosts(): Observable<List<PostResponse>>
+    fun getPostsAsync(): Deferred<List<PostResponse>>
 
     @GET("/users")
-    fun getAuthors(): Observable<List<AuthorResponse>>
+    fun getAuthorsAsync(): Deferred<List<AuthorResponse>>
 
     @GET("/comments")
-    fun getComments(): Observable<List<CommentResponse>>
+    fun getCommentsAsync(): Deferred<List<CommentResponse>>
 
     @GET
-    fun getAvatars(
+    fun getAvatarsAsync(
         @Url url: String = AVATAR_URL,
         @Query("results") totalAvatars: Int
-    ): Observable<AvatarResponse>
+    ): Deferred<AvatarResponse>
 }

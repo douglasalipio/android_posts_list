@@ -4,12 +4,12 @@ import com.babylon.mesquita.interview.data.AppDataSource
 
 class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 
-    fun requestPosts() = apiHelper.getPosts()
+    override fun requestPostAsync() = apiHelper.getPostsAsync()
 
-    fun requestComments() = apiHelper.getComments()
+    override fun requestCommentAsync() = apiHelper.getCommentsAsync()
 
-    override fun requestAvatars(totalAvatars: Int) = apiHelper.getAvatars(AVATAR_URL, totalAvatars)
+    override fun requestAvatarsAsync(totalAvatars: Int) = apiHelper.getAvatarsAsync(AVATAR_URL, totalAvatars)
 
-    override fun requestAuthors() = apiHelper.getAuthors()
+    override fun requestAuthorsAsync() = apiHelper.getAuthorsAsync()
 
 }

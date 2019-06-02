@@ -5,14 +5,15 @@ import com.babylon.mesquita.interview.data.remote.AvatarResponse
 import com.babylon.mesquita.interview.data.remote.CommentResponse
 import com.babylon.mesquita.interview.data.remote.PostResponse
 import io.reactivex.Observable
+import kotlinx.coroutines.Deferred
 
 interface AppDataSource {
 
-    fun requestAvatars(totalAvatars: Int): Observable<AvatarResponse>
+    fun requestAvatarsAsync(totalAvatars: Int): Deferred<AvatarResponse>
 
-    fun requestData(): Observable<Triple<List<PostResponse>, List<CommentResponse>, List<AuthorResponse>>>? {
-        return null
-    }
+    fun requestPostAsync(): Deferred<List<PostResponse>>
 
-    fun requestAuthors(): Observable<List<AuthorResponse>>
+    fun requestCommentAsync(): Deferred<List<CommentResponse>>
+
+    fun requestAuthorsAsync(): Deferred<List<AuthorResponse>>
 }

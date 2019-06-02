@@ -1,5 +1,7 @@
 package com.babylon.mesquita.interview.features.post
 
+import com.babylon.mesquita.interview.data.Author
+import com.babylon.mesquita.interview.data.Comment
 import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.foundation.BasePresenter
 import com.babylon.mesquita.interview.foundation.BaseView
@@ -14,14 +16,10 @@ interface PostContract {
     }
 
     interface Presenter : BasePresenter {
-        fun loadPosts()
-        fun loadAuthors()
-
+        fun loadDataBlog()
     }
 
     interface Interactor : BaseInteractor {
-        fun getPosts(getPostsCallback: PostInteractor.GetPostCallback)
-        fun getAuthors(getAuthorsCallback: PostInteractor.GetAuthorCallback)
-        fun onDestroy()
+        suspend fun getPosts(): List<Post>
     }
 }

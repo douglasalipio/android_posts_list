@@ -47,6 +47,7 @@ class PostDetailActivity : AppCompatActivity() {
     private fun showPostDetail(post: Post) {
         postDetailTitle.text = post.title
         postBody.text = post.body
+        postTag.text = post.tag
         commentButton.setOnClickListener { clickComments(post) }
     }
 
