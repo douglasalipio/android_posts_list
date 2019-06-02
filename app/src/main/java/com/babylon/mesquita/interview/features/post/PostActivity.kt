@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,7 +31,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         super.onCreate(savedInstanceState)
         setContentView(R.layout.post)
         postPresenter.takeView(this)
-        postPresenter.loadPosts()
+        postPresenter.loadDataBlog()
         setSupportActionBar(postToolbar)
         initComponents()
     }
@@ -112,7 +113,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
     }
 
     override fun showDataError() {
-
+        Toast.makeText(this, "Something unexpected occurred.", Toast.LENGTH_LONG).show()
     }
 }
 
