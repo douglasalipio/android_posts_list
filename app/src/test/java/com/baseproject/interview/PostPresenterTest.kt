@@ -4,11 +4,14 @@ import com.babylon.mesquita.interview.data.AppDataSource
 import com.babylon.mesquita.interview.features.post.PostContract
 import com.babylon.mesquita.interview.features.post.PostInteractor
 import com.babylon.mesquita.interview.features.post.PostPresenter
+import com.baseproject.interview.dataSet.listOfFakePosts
 import com.nhaarman.mockitokotlin2.capture
 import org.junit.Before
 import org.junit.Test
 import org.mockito.*
 import org.mockito.Mockito.*
+import org.secfirst.umbrella.misc.AppExecutors.Companion.ioContext
+import org.secfirst.umbrella.misc.launchSilent
 
 
 class PostPresenterTest {
@@ -31,20 +34,22 @@ class PostPresenterTest {
 
     @Test
     fun `should return a list of posts`() {
-        val fakePosts = listOfFakePosts()
-        presenter.loadPosts()
-        //`when`(appRepository.requestData()).thenReturn(Flowable.just(features))
-        //verify(appRepository).requestData().subscribe()
-        verify(interactor).getPosts(capture(getPostCallbackCaptor))
-        getPostCallbackCaptor.value.onPostLoaded(fakePosts)
-        verify(view).showPosts(fakePosts)
+        launchSilent(ioContext) {
+            val fakePosts = listOfFakePosts()
+            presenter.loadDataBlog()
+            verify(interactor).getPosts(capture(getPostCallbackCaptor))
+            getPostCallbackCaptor.value.onPostLoaded(fakePosts)
+            verify(view).showPosts(fakePosts)
+        }
     }
 
     @Test
-    fun `should show a error message`() {
-        presenter.loadPosts()
-        verify(interactor).getPosts(capture(getPostCallbackCaptor))
-        getPostCallbackCaptor.value.onPostNotAvailable("posts not available.")
-        verify(view).showDataError()
+    fun `should show an error message`() {
+        launchSilent(ioContext) {
+            presenter.loadDataBlog()
+            verify(interactor).getPosts(capture(getPostCallbackCaptor))
+            getPostCallbackCaptor.value.onPostNotAvailable()
+            verify(view).showDataError()
+        }
     }
 }

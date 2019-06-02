@@ -20,6 +20,6 @@ interface PostContract {
     }
 
     interface Interactor : BaseInteractor {
-        suspend fun getPosts(): List<Post>
+        suspend fun getPosts(getPostsCallback: PostInteractor.GetPostCallback)
     }
 }

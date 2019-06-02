@@ -39,19 +39,19 @@ data class Comment(
     var postId: Int
 ) : Parcelable
 
-private fun List<AuthorResponse>.makeAuthors(): List<Author> {
+fun List<AuthorResponse>.makeAuthors(): List<Author> {
     val authors = mutableListOf<Author>()
     forEach {
         val author = Author(
             it.id, it.name, it.username, it.email, it.address,
-            it.phone, it.website, it.company, RANDOM_IMAGE
+            it.phone, it.website, it.company, ""
         )
         authors.add(author)
     }
     return authors
 }
 
-private fun List<CommentResponse>.makeComments(postId: Int): List<Comment> {
+fun List<CommentResponse>.makeComments(postId: Int): List<Comment> {
     val comments = mutableListOf<Comment>()
     forEach {
         comments.add(Comment(it.id, it.name, it.email, it.body, postId))

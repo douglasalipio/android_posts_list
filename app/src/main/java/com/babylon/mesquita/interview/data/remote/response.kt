@@ -35,7 +35,7 @@ data class AuthorResponse(
     @SerializedName("company")
     @Expose
     var company: Company,
-    var urlAvatar: String = RANDOM_IMAGE
+    var avatarUrl: String = ""
 )
 
 data class CommentResponse(
@@ -79,6 +79,7 @@ data class AvatarResponse(
     @TypeConverters(ResultConvert::class)
     var results: List<Result>
 )
+
 @Parcelize
 data class Company(
     @SerializedName("name")
