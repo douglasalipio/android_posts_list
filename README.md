@@ -20,7 +20,7 @@ Fetching data from randomuser.me to get avatars for the authors.
 
 ### Project architecture
 
-I have implemented MVP architecture for the project with interactors. It is responsible for the same responsibilities as the DataManager but it is only concerned with those data access and processing calls that are required by the feature that it is serving.
+I have implemented MVP architecture for the project with interactors. It is responsible for the same responsibilities as the DataManager. However, it is only concerned with data access and processing calls that are required by the feature that it is serving.
 
 ### Relevant 3rd party libraries
 
@@ -32,5 +32,5 @@ I have implemented MVP architecture for the project with interactors. It is resp
 - Mockito
 - Junit4
 
-### Focus on architecture or UI. Which one you prefer of the 2 options and why?
-I prefer to spend more efforts developing activities related to the architecture of the project because I had professional experiences in the area and because I like studying this field in my free time subjects related to design patterns, how to keep the code clean, refactoring of legacy projects, bug fixes and so on.
+### Focus on architecture or UI. Which one you prefer of the two options and why?
+I prefer to spend more efforts on developing activities related to the architecture of the project because I have professional experiences in the area and I like studying this field in my free time subjects related to design patterns, how to keep the code clean, refactoring of legacy projects, bug fixes, and so on.
