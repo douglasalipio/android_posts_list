@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iPosts</string>
+    <string name="app_name">Pocket Blog</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -16,4 +16,7 @@
     <string name="menu_send">Send</string>
     <string name="label">comments</string>
     <string name="title_activity_post_detail">PostDetail</string>
+    <string name="title_activity_comment">CommentActivity</string>
+    <string name="flag_comment">Flag</string>
+    <string name="create_new_comment_message">Mock feature</string>
 </resources>

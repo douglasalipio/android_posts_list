@@ -24,4 +24,7 @@
     <dimen name="text_large">28sp</dimen>
     <dimen name="text_biggest">20sp</dimen>
     <dimen name="margin_top_big">25dp</dimen>
+    <dimen name="comment_button_container">52dp</dimen>
+    <dimen name="comment_button_width">16dp</dimen>
+    <dimen name="comment_button_height">16dp</dimen>
 </resources>

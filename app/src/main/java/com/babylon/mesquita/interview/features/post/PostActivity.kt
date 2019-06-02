@@ -1,8 +1,7 @@
-package com.babylon.mesquita.interview.post
+package com.babylon.mesquita.interview.features.post
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,7 +9,8 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Post
-import com.babylon.mesquita.interview.postdetail.PostDetailActivity
+import com.babylon.mesquita.interview.features.postdetail.PostDetailActivity
+import com.babylon.mesquita.interview.features.postdetail.PostDetailActivity.Companion.EXTRA_POST_DETAIL
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.post.*
@@ -18,12 +18,13 @@ import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.post_content.*
 import javax.inject.Inject
 
+
 class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     internal lateinit var postPresenter: PostContract.Presenter
     private val postClick: (Post) -> Unit = this::onPostClick
-
+    private val adapter = PostAdapter(postClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,11 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
     private fun initComponents() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, postToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this,
+            drawerLayout,
+            postToolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -91,8 +96,8 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         return true
     }
 
+
     override fun showPosts(posts: List<Post>) {
-        val adapter = PostAdapter(postClick)
         adapter.addAll(posts)
         postList?.let {
             it.layoutManager = LinearLayoutManager(this)
@@ -102,12 +107,12 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
 
     private fun onPostClick(post: Post) {
         val intent = Intent(this, PostDetailActivity::class.java)
-        intent.putExtra("test", post)
+        intent.putExtra(EXTRA_POST_DETAIL, post)
         startActivity(intent)
     }
 
     override fun showDataError() {
-        Log.e("test", "feature error.")
+
     }
 }
 

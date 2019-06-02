@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:pocketBlog="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/cardItem"
         style="@style/CardView.Light"
-        app:cardCornerRadius="@dimen/corner_radius"
-        app:cardUseCompatPadding="true"
+        pocketBlog:cardCornerRadius="@dimen/corner_radius"
+        pocketBlog:cardUseCompatPadding="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base_margin"
@@ -22,31 +22,31 @@
                 android:id="@+id/postAvatarImg"
                 android:layout_width="@dimen/avatar_width"
                 android:layout_height="@dimen/avatar_height"
-                app:civ_border_width="1dp"
+                pocketBlog:civ_border_width="1dp"
                 android:scaleType="centerCrop"
-                app:civ_border_color="@color/colorPrimary"
+                pocketBlog:civ_border_color="@color/colorPrimary"
                 android:src="@drawable/place_holder_avatar"
                 android:layout_marginLeft="@dimen/base_margin"
-                app:layout_constraintStart_toStartOf="parent"
+                pocketBlog:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/base_margin"
                 android:layout_marginTop="@dimen/base_margin"
-                app:layout_constraintTop_toTopOf="parent"/>
+                pocketBlog:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/postTitle"
+                android:id="@+id/postDetailTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/post_title_margin_top"
                 android:layout_marginStart="12dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toTopOf="@+id/postAvatarImg"
-                app:layout_constraintStart_toEndOf="@+id/postAvatarImg"
-                app:layout_constraintEnd_toEndOf="parent"
+                pocketBlog:layout_constraintTop_toTopOf="@+id/postAvatarImg"
+                pocketBlog:layout_constraintStart_toEndOf="@+id/postAvatarImg"
+                pocketBlog:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginLeft="@dimen/post_title_margin_left"
                 android:lines="2"
                 android:ellipsize="end"
-                app:autoSizeStepGranularity="1sp"
+                pocketBlog:autoSizeStepGranularity="1sp"
                 tools:text="How to create a Android App in 30"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -57,21 +57,23 @@
                 android:textColor="@color/gray_light"
                 tools:text="30"
                 android:layout_marginEnd="@dimen/small_margin"
-                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
-                app:layout_constraintTop_toBottomOf="@+id/postTitle"
+                pocketBlog:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
+                pocketBlog:layout_constraintTop_toBottomOf="@+id/postDetailTitle"
                 android:layout_marginRight="@dimen/small_margin"/>
 
         <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/comment_width"
                 android:layout_height="@dimen/comment_height"
-                app:srcCompat="@drawable/baseline_comment_black_18"
+                pocketBlog:srcCompat="@drawable/baseline_comment_black_18"
                 android:id="@+id/appCompatImageView"
                 android:layout_marginTop="@dimen/small_margin"
-                app:layout_constraintTop_toBottomOf="@+id/postTitle"
-                app:layout_constraintEnd_toEndOf="parent"
+                pocketBlog:layout_constraintTop_toBottomOf="@+id/postDetailTitle"
+                pocketBlog:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="@dimen/base_margin"
                 android:layout_marginRight="@dimen/base_margin"
                 />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>
+

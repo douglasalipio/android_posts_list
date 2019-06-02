@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-            android:name=".AppApplication"
+            android:name=".PocketBlogApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -17,15 +17,15 @@
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-                android:name=".postdetail.PostDetailActivity"
-                android:label="@string/title_activity_post_detail">
-        </activity>
-
+                android:name=".features.comment.CommentActivity"
+                android:label="@string/title_activity_comment"/>
         <activity
-                android:name=".post.PostActivity">
+                android:name=".features.postdetail.PostDetailActivity"
+                android:label="@string/title_activity_post_detail"/>
+
+        <activity android:name=".features.post.PostActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

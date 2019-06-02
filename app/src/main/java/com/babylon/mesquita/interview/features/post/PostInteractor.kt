@@ -1,4 +1,4 @@
-package com.babylon.mesquita.interview.post
+package com.babylon.mesquita.interview.features.post
 
 
 import com.babylon.mesquita.interview.data.AppDataSource
@@ -11,7 +11,8 @@ import io.reactivex.schedulers.Schedulers.io
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class PostInteractor @Inject constructor(private val appRepository: AppDataSource) : PostContract.Interactor {
+class PostInteractor @Inject constructor(private val appRepository: AppDataSource) :
+    PostContract.Interactor {
 
 
     private val compositeDisposable = CompositeDisposable()

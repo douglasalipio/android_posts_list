@@ -7,8 +7,8 @@ import com.babylon.mesquita.interview.data.AppRepository
 import com.babylon.mesquita.interview.data.remote.ApiHelper
 import com.babylon.mesquita.interview.data.remote.RemoteDataSource
 import com.babylon.mesquita.interview.data.remote.ServiceAppFactory
-import com.babylon.mesquita.interview.post.PostActivity
-import com.babylon.mesquita.interview.post.PostModule
+import com.babylon.mesquita.interview.features.post.PostActivity
+import com.babylon.mesquita.interview.features.post.PostModule
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

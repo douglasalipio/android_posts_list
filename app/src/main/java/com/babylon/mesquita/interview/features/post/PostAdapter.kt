@@ -1,4 +1,4 @@
-package com.babylon.mesquita.interview.post
+package com.babylon.mesquita.interview.features.post
 
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +35,7 @@ class PostAdapter(private val onPostClick: (Post) -> Unit) : RecyclerView.Adapte
             itemView.setOnClickListener { clickListener(this) }
             with(post) {
                 Picasso.get().load(post.author.avatarUrl).into(itemView.postAvatarImg)
-                itemView.postTitle.text = title
+                itemView.postDetailTitle.text = title
                 val label = "${comments.size}"
                 itemView.postSubtitle.text = label
             }

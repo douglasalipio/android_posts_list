@@ -1,4 +1,4 @@
-package com.babylon.mesquita.interview.post
+package com.babylon.mesquita.interview.features.post
 
 import android.util.Log
 import com.babylon.mesquita.interview.data.Post
@@ -20,7 +20,8 @@ class PostPresenter @Inject constructor(private val interactor: PostContract.Int
 
     override fun loadAuthors() {
         view?.let {
-            interactor.getAuthors(object : PostInteractor.GetAuthorCallback {
+            interactor.getAuthors(object :
+                PostInteractor.GetAuthorCallback {
                 override fun onAuthorLoaded(authorResponse: List<AuthorResponse>) {
                     Log.e("test", authorResponse.toString())
                 }

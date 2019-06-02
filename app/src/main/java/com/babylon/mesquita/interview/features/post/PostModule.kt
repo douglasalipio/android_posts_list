@@ -1,4 +1,4 @@
-package com.babylon.mesquita.interview.post
+package com.babylon.mesquita.interview.features.post
 
 import com.babylon.mesquita.interview.di.ActivityScoped
 import dagger.Binds

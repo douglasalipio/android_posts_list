@@ -6,12 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         pocketBlog:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/app_bar">
+        tools:showIn="@layout/comment"
+        tools:context=".features.comment.CommentActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/postList"
+            android:id="@+id/commentsList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
+            android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
