@@ -10,8 +10,8 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.*
 import org.mockito.Mockito.*
-import org.secfirst.umbrella.misc.AppExecutors.Companion.ioContext
 import org.secfirst.umbrella.misc.launchSilent
+import kotlin.coroutines.EmptyCoroutineContext
 
 
 class PostPresenterTest {
@@ -34,7 +34,7 @@ class PostPresenterTest {
 
     @Test
     fun `should return a list of posts`() {
-        launchSilent(ioContext) {
+        launchSilent(EmptyCoroutineContext) {
             val fakePosts = listOfFakePosts()
             presenter.loadDataBlog()
             verify(interactor).getPosts(capture(getPostCallbackCaptor))
@@ -45,7 +45,7 @@ class PostPresenterTest {
 
     @Test
     fun `should show an error message`() {
-        launchSilent(ioContext) {
+        launchSilent(EmptyCoroutineContext) {
             presenter.loadDataBlog()
             verify(interactor).getPosts(capture(getPostCallbackCaptor))
             getPostCallbackCaptor.value.onPostNotAvailable()

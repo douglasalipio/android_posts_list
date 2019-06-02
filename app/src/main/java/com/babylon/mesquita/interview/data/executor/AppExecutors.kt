@@ -14,9 +14,6 @@ open class AppExecutors {
         val ioContext: CoroutineContext
             get() = Dispatchers.IO
 
-        val networkContext: CoroutineContext
-            get() = newFixedThreadPoolContext(THREAD_COUNT, "networkIO")
-
         val uiContext: CoroutineContext
             get() = Dispatchers.Main
     }
