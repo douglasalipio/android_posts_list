@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:pocketBlog="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardItem"
+        style="@style/CardView.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        pocketBlog:cardUseCompatPadding="true"
+        android:layout_marginTop="@dimen/base_margin"
+        android:layout_marginStart="@dimen/base_margin"
+        android:layout_marginEnd="@dimen/base_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/commentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                pocketBlog:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/rubik_bold"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_biggest"
+                pocketBlog:autoSizeTextType="uniform"
+                android:gravity="start"
+                android:textColor="@android:color/background_dark"
+                pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
+                pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
+                pocketBlog:autoSizeStepGranularity="1sp"
+                tools:text="id labore ex et quam laborum"
+                pocketBlog:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+                android:id="@+id/responseEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                pocketBlog:autoSizeTextType="none"
+                android:textStyle="bold"
+                android:gravity="start"
+                tools:text="Eliseo@gardner.biz"
+                android:textColor="@color/gray_light"
+                android:layout_marginTop="5dp"
+                android:textSize="15dp"
+                android:lineSpacingExtra="@dimen/base_margin"
+                pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
+                pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
+                pocketBlog:autoSizeStepGranularity="@dimen/text_granularity"
+                pocketBlog:layout_constraintTop_toBottomOf="@+id/commentTitle"/>
+
+        <TextView
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                pocketBlog:autoSizeTextType="none"
+                android:gravity="start"
+                android:ellipsize="marquee"
+                tools:text="laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_biggest"
+                android:lineSpacingExtra="@dimen/base_margin"
+                pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
+                pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
+                pocketBlog:autoSizeStepGranularity="@dimen/text_granularity"
+                pocketBlog:layout_constraintTop_toBottomOf="@+id/responseEmail"/>
+
+        <TextView
+                android:id="@+id/flatComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                pocketBlog:autoSizeTextType="none"
+                android:gravity="start"
+                android:text="Flag"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:lineSpacingExtra="@dimen/base_margin"
+                pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
+                pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
+                pocketBlog:autoSizeStepGranularity="@dimen/text_granularity"
+                pocketBlog:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                pocketBlog:layout_constraintTop_toBottomOf="@+id/comment"/>
+
+        <TextView
+                android:id="@+id/recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                pocketBlog:autoSizeTextType="none"
+                android:gravity="start"
+                android:text="Recommend (2)"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:lineSpacingExtra="@dimen/base_margin"
+                pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
+                pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
+                pocketBlog:autoSizeStepGranularity="@dimen/text_granularity"
+                pocketBlog:layout_constraintTop_toTopOf="@+id/replay"
+                android:layout_marginEnd="20dp"
+                pocketBlog:layout_constraintEnd_toStartOf="@+id/replay"
+                android:layout_marginRight="8dp"/>
+
+        <TextView
+                android:id="@+id/replay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                pocketBlog:autoSizeTextType="none"
+                android:gravity="start"
+                android:text="Replay"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:lineSpacingExtra="@dimen/base_margin"
+                pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
+                pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
+                pocketBlog:autoSizeStepGranularity="@dimen/text_granularity"
+                pocketBlog:layout_constraintBottom_toBottomOf="parent"
+                pocketBlog:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

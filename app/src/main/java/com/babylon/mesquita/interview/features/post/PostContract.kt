@@ -1,4 +1,4 @@
-package com.babylon.mesquita.interview.post
+package com.babylon.mesquita.interview.features.post
 
 import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.foundation.BasePresenter

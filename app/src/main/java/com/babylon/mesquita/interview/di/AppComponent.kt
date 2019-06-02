@@ -1,6 +1,6 @@
 package com.babylon.mesquita.interview.di
 
-import com.babylon.mesquita.interview.AppApplication
+import com.babylon.mesquita.interview.PocketBlogApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,13 +15,13 @@ import javax.inject.Singleton
         NetworkModule::class,
         RepositoryModule::class]
 )
-interface AppComponent : AndroidInjector<AppApplication> {
+interface AppComponent : AndroidInjector<PocketBlogApplication> {
 
     @Component.Builder
     interface Builder {
 
         @BindsInstance
-        fun application(app: AppApplication): Builder
+        fun application(pocketBlog: PocketBlogApplication): Builder
 
         fun build(): AppComponent
     }

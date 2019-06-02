@@ -1,9 +1,9 @@
 package com.baseproject.interview
 
 import com.babylon.mesquita.interview.data.AppDataSource
-import com.babylon.mesquita.interview.post.PostContract
-import com.babylon.mesquita.interview.post.PostInteractor
-import com.babylon.mesquita.interview.post.PostPresenter
+import com.babylon.mesquita.interview.features.post.PostContract
+import com.babylon.mesquita.interview.features.post.PostInteractor
+import com.babylon.mesquita.interview.features.post.PostPresenter
 import com.nhaarman.mockitokotlin2.capture
 import org.junit.Before
 import org.junit.Test
