@@ -84,7 +84,7 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
 
     override fun showPosts(posts: List<Post>) {
         adapter.addAll(posts)
-        postList?.let {
+        postRecyclerView?.let {
             it.layoutManager = LinearLayoutManager(this)
             it.adapter = adapter
         }

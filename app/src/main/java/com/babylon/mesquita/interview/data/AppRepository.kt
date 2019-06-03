@@ -1,9 +1,6 @@
 package com.babylon.mesquita.interview.data
 
 import com.babylon.mesquita.interview.data.remote.*
-import io.reactivex.Observable
-import io.reactivex.rxkotlin.Observables
-import kotlinx.coroutines.Deferred
 import javax.inject.Inject
 
 

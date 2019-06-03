@@ -48,9 +48,9 @@ class CommentAdapter(
                 itemView.commentTitle.text = name
                 itemView.responseEmail.text = email
                 itemView.comment.text = body
-                itemView.replay.setOnClickListener { replyClick(this@CommentHolder) }
-                itemView.flagComment.setOnClickListener { flagClick(this@CommentHolder) }
-                itemView.recommend.setOnClickListener { recommendClick(this@CommentHolder) }
+                itemView.commentReplay.setOnClickListener { replyClick(this@CommentHolder) }
+                itemView.commentFlag.setOnClickListener { flagClick(this@CommentHolder) }
+                itemView.commentRecommend.setOnClickListener { recommendClick(this@CommentHolder) }
             }
         }
     }

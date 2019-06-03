@@ -4,7 +4,6 @@ import com.babylon.mesquita.interview.data.remote.AuthorResponse
 import com.babylon.mesquita.interview.data.remote.AvatarResponse
 import com.babylon.mesquita.interview.data.remote.CommentResponse
 import com.babylon.mesquita.interview.data.remote.PostResponse
-import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
 
 interface AppDataSource {

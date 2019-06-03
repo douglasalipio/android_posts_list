@@ -1,6 +1,7 @@
 package com.baseproject.interview
 
 import android.content.Intent
+import android.provider.Telephony.TextBasedSmsColumns.BODY
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -16,19 +17,13 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class PostDetailTest {
+class PostDetailActivityTest {
     @Rule
     @JvmField
     var postDetailActivityTestRule =
-        ActivityTestRule(PostDetailActivity::class.java,true, false)
+        ActivityTestRule(PostDetailActivity::class.java, true, false)
 
     private val fakePost = fakePost()
-
-    companion object {
-        const val TITLE = "title"
-        const val TAG = "tag"
-        const val BODY = "body"
-    }
 
     @Before
     fun setUp() {
@@ -74,5 +69,11 @@ class PostDetailTest {
     private fun startActivityWithWithStubbedTask(post: Post) {
         val startIntent = Intent().apply { putExtra(PostDetailActivity.EXTRA_POST_DETAIL, post) }
         postDetailActivityTestRule.launchActivity(startIntent)
+    }
+
+    companion object {
+        const val TITLE = "title"
+        const val TAG = "tag"
+        const val BODY = "body"
     }
 }

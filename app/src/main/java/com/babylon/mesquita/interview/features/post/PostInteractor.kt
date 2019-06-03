@@ -2,10 +2,6 @@ package com.babylon.mesquita.interview.features.post
 
 
 import com.babylon.mesquita.interview.data.*
-import org.secfirst.umbrella.misc.AppExecutors
-import org.secfirst.umbrella.misc.AppExecutors.Companion.ioContext
-import org.secfirst.umbrella.misc.AppExecutors.Companion.uiContext
-import org.secfirst.umbrella.misc.launchSilent
 import javax.inject.Inject
 
 class PostInteractor @Inject constructor(private val appRepository: AppDataSource) :
