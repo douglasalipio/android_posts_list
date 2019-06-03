@@ -33,4 +33,4 @@ I have implemented MVP architecture for the project with interactors. It is resp
 - Junit4
 
 ### Focus on architecture or UI. Which one you prefer of the two options and why?
-I prefer to spend more efforts on developing activities related to the architecture of the project because I have professional experiences in the area and I like studying this field in my free time subjects related to design patterns, how to keep the code clean, refactoring of legacy projects, bug fixes, and so on.
+I have professional experience developing activities related to project architectures. Consequently, in most cases, I prefer to spend more efforts on the architectural area. In my free time, I also like studying subjects and best practices in this field, for instance, design patterns, how to keep the code clean, refactoring legacy projects, bug fixes, and so on.
