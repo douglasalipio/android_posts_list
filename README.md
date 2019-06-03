@@ -20,7 +20,7 @@ Fetching data from randomuser.me to get avatars for the authors.
 
 ### Project architecture
 
-I have implemented MVP architecture for the project with interactors. It is responsible for the same responsibilities as the DataManager. However, it is only concerned with data access and processing calls that are required by the feature that it is serving.
+I have implemented MVP architecture for the project with interactors. It is responsible for the same responsibilities as DataManager. However, it is only concerned with data access and processing calls that are required by the feature that it is serving.
 
 ### Relevant 3rd party libraries
 
