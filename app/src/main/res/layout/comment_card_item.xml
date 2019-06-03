@@ -70,7 +70,7 @@
                 pocketBlog:layout_constraintTop_toBottomOf="@+id/responseEmail"/>
 
         <TextView
-                android:id="@+id/flagComment"
+                android:id="@+id/commentFlag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 pocketBlog:autoSizeTextType="none"
@@ -88,7 +88,7 @@
                 pocketBlog:layout_constraintTop_toBottomOf="@+id/comment"/>
 
         <TextView
-                android:id="@+id/recommend"
+                android:id="@+id/commentRecommend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 pocketBlog:autoSizeTextType="none"
@@ -101,13 +101,13 @@
                 pocketBlog:autoSizeMinTextSize="@dimen/text_size_min"
                 pocketBlog:autoSizeMaxTextSize="@dimen/text_size_max"
                 pocketBlog:autoSizeStepGranularity="@dimen/text_granularity"
-                pocketBlog:layout_constraintTop_toTopOf="@+id/replay"
+                pocketBlog:layout_constraintTop_toTopOf="@+id/commentReplay"
                 android:layout_marginEnd="20dp"
-                pocketBlog:layout_constraintEnd_toStartOf="@+id/replay"
+                pocketBlog:layout_constraintEnd_toStartOf="@+id/commentReplay"
                 android:layout_marginRight="8dp"/>
 
         <TextView
-                android:id="@+id/replay"
+                android:id="@+id/commentReplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 pocketBlog:autoSizeTextType="none"

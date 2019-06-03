@@ -1,6 +1,5 @@
 package com.babylon.mesquita.interview.data.remote
 
-import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query

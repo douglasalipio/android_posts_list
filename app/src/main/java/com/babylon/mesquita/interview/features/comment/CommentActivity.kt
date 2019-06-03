@@ -12,7 +12,6 @@ import com.babylon.mesquita.interview.data.Comment
 import com.babylon.mesquita.interview.data.Post
 
 import kotlinx.android.synthetic.main.comment.*
-import kotlinx.android.synthetic.main.comment_card_item.*
 import kotlinx.android.synthetic.main.comment_content.*
 
 class CommentActivity : AppCompatActivity() {
@@ -54,7 +53,7 @@ class CommentActivity : AppCompatActivity() {
 
     private fun showComments(comments: List<Comment>) {
         adapter.addAll(comments)
-        commentsList?.let {
+        commentsRecyclerView?.let {
             it.layoutManager = LinearLayoutManager(this)
             it.adapter = adapter
         }

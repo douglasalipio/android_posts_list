@@ -16,4 +16,10 @@ ext {
     dexmaker_version = '2.12.1'
     espresso_version = '3.1.1'
     dbflow_version = "4.2.4"
+    core_version = "1.2.0"
+    picasso_version = "2.71828"
+    hdodenhof_version = "3.0.0"
+    extJunit_version = "1.1.1"
+    androidx_version = "1.0.0"
+
 }

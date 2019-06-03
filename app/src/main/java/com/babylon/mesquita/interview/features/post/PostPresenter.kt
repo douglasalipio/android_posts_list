@@ -2,8 +2,8 @@ package com.babylon.mesquita.interview.features.post
 
 import com.babylon.mesquita.interview.data.Post
 import com.babylon.mesquita.interview.di.ActivityScoped
-import org.secfirst.umbrella.misc.AppExecutors.Companion.uiContext
-import org.secfirst.umbrella.misc.launchSilent
+import com.babylon.mesquita.interview.util.AppExecutors.Companion.uiContext
+import com.babylon.mesquita.interview.util.launchSilent
 import javax.inject.Inject
 
 @ActivityScoped

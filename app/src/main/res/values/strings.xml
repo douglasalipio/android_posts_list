@@ -17,7 +17,6 @@
     <string name="label">comments</string>
     <string name="title_activity_post_detail">PostDetail</string>
     <string name="title_activity_comment">CommentActivity</string>
-    <string name="flag_comment">Flag</string>
     <string name="create_new_comment_message">Mock feature</string>
     <string name="communicate">Communicate</string>
     <string name="comment_action_flag">Flag</string>

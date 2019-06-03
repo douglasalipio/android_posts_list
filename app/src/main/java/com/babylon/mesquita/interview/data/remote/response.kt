@@ -1,9 +1,6 @@
 package com.babylon.mesquita.interview.data.remote
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.TypeConverters
-import com.babylon.mesquita.interview.data.local.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -21,7 +18,6 @@ data class AuthorResponse(
     @SerializedName("email")
     @Expose
     var email: String,
-    @TypeConverters(AddressConvert::class)
     @SerializedName("address")
     @Expose
     var address: Address,
@@ -31,7 +27,6 @@ data class AuthorResponse(
     @SerializedName("website")
     @Expose
     var website: String,
-    @TypeConverters(CompanyConvert::class)
     @SerializedName("company")
     @Expose
     var company: Company,
@@ -72,11 +67,9 @@ data class PostResponse(
     var avatarUrl: String
 )
 
-@Entity(tableName = "avatar")
 data class AvatarResponse(
     @SerializedName("results")
     @Expose
-    @TypeConverters(ResultConvert::class)
     var results: List<Result>
 )
 
@@ -107,7 +100,6 @@ data class Address(
     @SerializedName("zipcode")
     @Expose
     var zipcode: String,
-    @TypeConverters(GeoConvert::class)
     @SerializedName("geo")
     @Expose
     var geocode: Geo
@@ -138,7 +130,6 @@ data class Picture(
 
 @Parcelize
 data class Result(
-    @TypeConverters(PictureConvert::class)
     @SerializedName("picture")
     @Expose
     var picture: Picture
