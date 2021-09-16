@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.babylon.mesquita.interview"
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -50,6 +50,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     //Google libraries
     implementation "androidx.appcompat:appcompat:$androidx_version"
     implementation "androidx.core:core-ktx:$androidx_version"
@@ -60,36 +61,44 @@ dependencies {
     implementation "com.google.android.material:material:$androidx_version"
     implementation "androidx.cardview:cardview:$androidx_version"
     implementation "androidx.legacy:legacy-support-v4:$androidx_version"
+
     //Network libraries
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_adapter_version"
     implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_version"
+
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.hamcrest:hamcrest-all:$hamcrest_version"
+
     // Android Testing Support Library's runner and rules
     androidTestImplementation "androidx.test:runner:$runner_version"
     androidTestImplementation "androidx.test:rules:$runner_version"
     androidTestImplementation "androidx.test.ext:junit:$extJunit_version"
     androidTestImplementation "androidx.test:core:$core_version"
+
     // Dependencies for Android unit tests
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
     androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:$dexmaker_version"
+
     // Espresso UI Testing
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
     androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$espresso_version"
+
     //Dependency Injection
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
     //Image libraries
     implementation "de.hdodenhof:circleimageview:$hdodenhof_version"
     implementation "com.squareup.picasso:picasso:$picasso_version"
+
     //Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
