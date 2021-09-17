@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: 'config/version.gradle'
 
-
 android {
-    compileSdkVersion 28
+
     defaultConfig {
         applicationId "com.babylon.mesquita.interview"
         minSdkVersion 16
-        targetSdkVersion 29
+        compileSdkVersion 31
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -19,10 +19,9 @@ android {
             abiFilters "armeabi-v7a", "x86", "armeabi", "mips"
         }
     }
-    androidExtensions {
-        experimental = true
+    buildFeatures {
+        viewBinding true
     }
-
     sourceSets {
         androidTest {
             java.srcDirs += "src/mock/java"

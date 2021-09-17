@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Comment
 import com.babylon.mesquita.interview.data.Post
-
-import kotlinx.android.synthetic.main.comment.*
-import kotlinx.android.synthetic.main.comment_content.*
+import com.babylon.mesquita.interview.databinding.CommentBinding
+import com.babylon.mesquita.interview.databinding.CommentContentBinding
 
 class CommentActivity : AppCompatActivity() {
 
@@ -20,13 +19,17 @@ class CommentActivity : AppCompatActivity() {
     private val flagClick: () -> Unit = this::clickFlagComment
     private val recommendClick: () -> Unit = this::clickRecommendComment
     private val adapter = CommentAdapter(replyClick, recommendClick, flagClick)
+    private lateinit var commentBinding: CommentBinding
+    private lateinit var commentContentBinding: CommentContentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.comment)
-        loadComments()
+        commentBinding = CommentBinding.inflate(layoutInflater)
+        commentContentBinding = CommentContentBinding.inflate(layoutInflater)
         initToolbar()
-        fabComment.setOnClickListener { clickWriteComment(it) }
+        loadComments()
+        commentBinding.fabComment.setOnClickListener { clickWriteComment(it) }
     }
 
     private fun clickReplayComment() = defaultMockMessage()
@@ -37,11 +40,12 @@ class CommentActivity : AppCompatActivity() {
 
     private fun clickWriteComment(view: View) {
         Snackbar.make(view, getString(R.string.create_new_comment_message), Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show()
+                .setAction("Action", null).show()
     }
 
     private fun defaultMockMessage() {
-        Toast.makeText(this, getString(R.string.create_new_comment_message), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.create_new_comment_message), Toast.LENGTH_SHORT)
+                .show()
     }
 
     private fun loadComments() {
@@ -53,14 +57,14 @@ class CommentActivity : AppCompatActivity() {
 
     private fun showComments(comments: List<Comment>) {
         adapter.addAll(comments)
-        commentsRecyclerView?.let {
+        commentContentBinding.commentsRecyclerView.let {
             it.layoutManager = LinearLayoutManager(this)
             it.adapter = adapter
         }
     }
 
     private fun initToolbar() {
-        commentToolbar.let {
+        commentBinding.commentToolbar.let {
             setSupportActionBar(it)
             supportActionBar?.setDisplayShowTitleEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -18,12 +18,15 @@
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
                 android:name=".features.comment.CommentActivity"
+                android:exported="true"
                 android:label="@string/title_activity_comment"/>
         <activity
                 android:name=".features.postdetail.PostDetailActivity"
+                android:exported="true"
                 android:label="@string/title_activity_post_detail"/>
 
-        <activity android:name=".features.post.PostActivity">
+        <activity android:name=".features.post.PostActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

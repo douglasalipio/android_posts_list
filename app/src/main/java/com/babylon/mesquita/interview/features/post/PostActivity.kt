@@ -10,44 +10,50 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.babylon.mesquita.interview.R
 import com.babylon.mesquita.interview.data.Post
+import com.babylon.mesquita.interview.databinding.AppBarBinding
+import com.babylon.mesquita.interview.databinding.PostBinding
+import com.babylon.mesquita.interview.databinding.PostContentBinding
 import com.babylon.mesquita.interview.features.postdetail.PostDetailActivity
 import com.babylon.mesquita.interview.features.postdetail.PostDetailActivity.Companion.EXTRA_POST_DETAIL
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.post.*
-import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.post_content.*
 import javax.inject.Inject
 
-
-class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationView.OnNavigationItemSelectedListener {
+class PostActivity : DaggerAppCompatActivity(), PostContract.View,
+    NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     internal lateinit var postPresenter: PostContract.Presenter
     private val postClick: (Post) -> Unit = this::onPostClick
     private val adapter = PostAdapter(postClick)
+    private lateinit var postBinding: PostBinding
+    private lateinit var postContentBinding: PostContentBinding
+    private lateinit var appBarBinding: AppBarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.post)
         postPresenter.takeView(this)
+        postContentBinding = PostContentBinding.inflate(layoutInflater)
+        postBinding = PostBinding.inflate(layoutInflater)
+        appBarBinding = AppBarBinding.inflate(layoutInflater)
         postPresenter.loadDataBlog()
-        setSupportActionBar(postToolbar)
+        setSupportActionBar(appBarBinding.postToolbar)
         initComponents()
     }
 
     private fun initComponents() {
-        val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
-            postToolbar,
+            appBarBinding.postToolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
-        drawerLayout.addDrawerListener(toggle)
+        postBinding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        navView.setNavigationItemSelectedListener(this)
+        postBinding.navView.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -81,13 +87,9 @@ class PostActivity : DaggerAppCompatActivity(), PostContract.View, NavigationVie
         return true
     }
 
-
     override fun showPosts(posts: List<Post>) {
+        postContentBinding.postRecyclerView.adapter = adapter
         adapter.addAll(posts)
-        postRecyclerView?.let {
-            it.layoutManager = LinearLayoutManager(this)
-            it.adapter = adapter
-        }
     }
 
     private fun onPostClick(post: Post) {
